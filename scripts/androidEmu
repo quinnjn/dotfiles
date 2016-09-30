@@ -1,0 +1,111 @@
+#!/usr/bin/env node
+
+const spawn = require('child_process').spawn;
+const exec = require('child_process').exec;
+
+const args = process.argv.slice(2);
+
+function getName(target) {
+  return 'emu-' + target.name.toLowerCase().replace(' ', '-');
+}
+
+function getTargets(callback) {
+  const targets = spawn('android', ['list', 'targets']);
+  var buffer = "";
+  var results = [];
+  var result = {};
+
+  targets.stdout.on('data', (data) => {
+    buffer += data.toString();
+  });
+
+  targets.on('close', (code) => {
+    var items = buffer.split("----------").slice(1);
+    items.forEach(function (item) {
+      results.push({
+        id: item.match(/id: (\d+)/)[1],
+        name: item.match(/Name: (Android .*?)\n/)[1],
+        api: item.match(/API level: (\d+)/)[1]
+      });
+    });
+
+    results.sort(function (a, b) {
+      return a.api < b.api;
+    });
+
+    callback(results);
+ });
+}
+
+function create(target, cb) {
+  const create = spawn('android', ['create', 'avd',
+    '--target', target.id, '--name', getName(target)
+  ]);
+  const expectedName = getName(target)
+  var buffer = "";
+  var results = [];
+  var result = {};
+
+  create.stdout.on('data', (data) => {
+    data = data.toString();
+    if (/Do you wish to create a custom hardware profile/.test(data)) {
+      create.stdin.write('no');
+    }
+  });
+
+  create.on('close', (code) => {
+    cb();
+  });
+}
+
+function exists(target, cb) {
+  const exists = spawn('android', ['list', 'avd']);
+  const expectedName = getName(target)
+  var buffer = "";
+  var results = [];
+  var result = {};
+
+  exists.stdout.on('data', (data) => {
+    buffer += data.toString();
+  });
+
+  exists.on('close', (code) => {
+    var items = buffer.split("----------").slice(1);
+    items.forEach(function (item) {
+      var result = {
+        name: item.match(/Name: (.*?)\n/)[1],
+      };
+
+      if (result.name === expectedName) {
+        cb(true);
+        return;
+      }
+    });
+
+    cb(false);
+ });
+}
+
+function launch(target, cb) {
+  exec(`emulator -avd ${getName(target)}`, (error, stdout, stderr) => {
+    if (error) { console.log(error); }
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+  });
+}
+
+getTargets(function (targets) {
+  var target = targets[0];
+  var thenLaunch = function () {
+    launch(target);
+  };
+  exists(target, (result) => {
+    if (!result) {
+      console.log('creating', getName(target));
+      create(target, thenLaunch);
+    } else {
+      console.log('launching', getName(target));
+      thenLaunch();
+    }
+  });
+});
