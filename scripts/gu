@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# USAGE
+# -----
+# gu  // Sets default git user
+# gu work // Sets work git user
+# gu work abc123 // Pairs $NAME with abc123 for git user
+
+WORK_NAME=work-name
+WORK_EMAIL=work-email
+WORK_SHARED_EMAIL=shared-work-email
+PUBLIC_NAME=public-name
+PUBLIC_EMAIL=public-email
+
+CONTEXT=$1
+NAME=$WORK_NAME
+EMAIL=$WORK_EMAIL
+
+if [ "public" = "$CONTEXT" ]; then
+  EMAIL=$PUBLIC_EMAIL
+fi
+
+if [ "" != "$2" ]; then
+  OTHER_NAME="$2"
+  EMAIL=$WORK_SHARED_EMAIL
+  if [[ "$NAME" < "$OTHER_NAME" ]]; then
+    NAME="$NAME and $OTHER_NAME"
+  else
+    NAME="$OTHER_NAME and $NAME"
+  fi
+fi
+
+echo $NAME / $EMAIL
+git config user.name "$NAME"
+git config user.email "$EMAIL"
+
