@@ -6,4 +6,4 @@ alias pi="pacman -S"
 git config --global alias.co checkout
 git config --global alias.st status
 
-alias dev="tmux attach -t dev || tmux new -s dev"
+alias connect="tmux new-session -A -s $1"
