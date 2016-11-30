@@ -18,6 +18,9 @@ set softtabstop=2
 " Encoding - Use UTF-8
 set encoding=utf-8
 
+" Highlight search terms
+set hlsearch
+
 " Pathogen
 execute pathogen#infect()
 
