@@ -3,6 +3,7 @@
 USER_HOME="/home/quinnjn"
 GIT_LOCATION="$USER_HOME/git/github.com/quinnjn/dotfiles"
 FILE=$1
+FILE_TO_EDIT=$GIT_LOCATION/$FILE
 
 set -e
 set -u
@@ -13,6 +14,8 @@ if [ -z "$FILE" ]; then
   exit -1
 fi
 
-vim $GIT_LOCATION/$FILE
-cp $GIT_LOCATION/$FILE $USER_HOME
+vim $FILE_TO_EDIT
+git add $FILE_TO_EDIT
+git commit -v
+cp $FILE_TO_EDIT $USER_HOME
 source ~/.bashrc
