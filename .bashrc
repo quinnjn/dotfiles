@@ -10,4 +10,5 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 
 source ~/.bash_aliases
+source ~/.bash_functions
 source ~/.bash_prompt
