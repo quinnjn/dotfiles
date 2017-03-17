@@ -26,3 +26,5 @@ execute pathogen#infect()
 
 " NERDTree
 map \nt :NERDTreeToggle<CR>
+" Colour NERDTree
+highlight Directory ctermfg=Red
