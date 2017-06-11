@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:~/bin
 export VISUAL=vim
 export EDITOR=$VISUAL
 
