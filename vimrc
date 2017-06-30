@@ -38,3 +38,6 @@ map \nt :NERDTreeToggle<CR>
 
 " Colour NERDTree
 highlight Directory ctermfg=Red
+
+" TComment
+map <silent> <LocalLeader>cc :TComment<CR>
