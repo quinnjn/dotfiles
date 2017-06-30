@@ -1,3 +1,15 @@
+" Vundle setup
+set rtp+=~/.vim/bundle/Vundle.vim " set the runtime path to include Vundle and initialize
+call vundle#begin()
+
+" Vundle packages
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tomtom/tcomment_vim'
+
+" Vundle teardown
+call vundle#end()
+
 " Show line numbers
 set number
 
@@ -21,10 +33,8 @@ set encoding=utf-8
 " Highlight search terms
 set hlsearch
 
-" Pathogen
-execute pathogen#infect()
-
 " NERDTree
 map \nt :NERDTreeToggle<CR>
+
 " Colour NERDTree
 highlight Directory ctermfg=Red
