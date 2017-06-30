@@ -6,6 +6,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'kien/ctrlp.vim'
 
 " Vundle teardown
 call vundle#end()
@@ -41,3 +42,8 @@ highlight Directory ctermfg=Red
 
 " TComment
 map <silent> <LocalLeader>cc :TComment<CR>
+
+" CtrlP
+map <silent> <leader>ff :CtrlP<CR>
+map <silent> <leader>fr :CommandTFlush<CR>
+map <silent> <leader>be :CtrlPBuffer<CR>
