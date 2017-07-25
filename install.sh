@@ -8,6 +8,7 @@ ln -s $(pwd)/bash_prompt ~/.bash_prompt
 ln -s $(pwd)/bashrc ~/.bashrc
 ln -s $(pwd)/tmux.conf ~/.tmux.conf
 ln -s $(pwd)/vimrc ~/.vimrc
+ln -s $(pwd)/global.gitignore ~/.gitignore
 
 # create .bin directory
 rm -rf ~/bin
