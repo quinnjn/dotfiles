@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ACCOUNT_ID="34983"
+ZONE_ID="neumiiller.com"
+RECORD_ID="6790614"
+IP=`curl -s http://icanhazip.com/`
+
+curl -H "Authorization: Bearer $TOKEN" \
+     -H "Content-Type: application/json" \
+     -H "Accept: application/json" \
+     -X "PATCH" \
+     -i "https://api.dnsimple.com/v2/$ACCOUNT_ID/zones/$ZONE_ID/records/$RECORD_ID" \
+     -d "{\"content\":\"$IP\"}"
+
