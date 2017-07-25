@@ -1,0 +1,66 @@
+#!/bin/node
+
+const fs = require('fs');
+
+function parseMiscItems(items, mapping) {
+  var total = 0;
+  items.forEach(function (item) { 
+    total += parseMoney(item.split(' ')[0]);
+  });
+
+  var mappingTotal = 0;
+  Object.keys(mapping).forEach(function (k) { 
+    mappingTotal += mapping[k]
+  });
+
+  const percentageMapping = {};
+  Object.keys(mapping).forEach(function (k) {
+    percentageMapping[k] = (mapping[k] / mappingTotal) * total;
+  });
+
+  return percentageMapping;
+}
+
+function parseLineItems(items) {
+  const mapping = {};
+  items.forEach(function (item) {
+    const split = item.split(/\s+/);
+    const cost = parseMoney(split[0]);
+    const people = split[1].split(',');
+    const description = split[2];
+
+    const splitAmount = cost / people.length; // TODO what about uneven amounts
+    people.forEach(function (person) {
+      if (!mapping[person]) { mapping[person] = 0 }
+      mapping[person] += splitAmount
+    });
+  });
+
+  return mapping;
+}
+
+function parseMoney(money) {
+  return Number(money);
+}
+
+const file = process.argv[2] || '/dev/stdin';
+
+const content = fs.readFileSync(file).toString()
+const sections = content.split('\n\n').map(i => i.trim())
+
+const lines = parseLineItems(sections[0].split('\n'));
+const miscs = parseMiscItems(sections[1].split('\n'), lines);
+const total = parseMoney(sections[2].split(' ')[0]);
+
+const totals = {};
+var generatedTotal = 0;
+Object.keys(lines).forEach(function (k) {
+  var t = lines[k] + miscs[k];
+  totals[k] = t;
+  generatedTotal += t;
+  console.log(k + ": $" + t);
+});
+
+if (generatedTotal !== total) {
+  console.error("Sanity Check:", generatedTotal, total);
+}
