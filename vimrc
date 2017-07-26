@@ -7,6 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'vim-syntastic/syntastic'
 
 " Vundle teardown
 call vundle#end()
@@ -47,3 +48,15 @@ map <silent> <LocalLeader>cc :TComment<CR>
 map <silent> <leader>ff :CtrlP<CR>
 map <silent> <leader>fr :CommandTFlush<CR>
 map <silent> <leader>be :CtrlPBuffer<CR>
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_eslint_exe='eslint'
