@@ -52,6 +52,14 @@ map <silent> <leader>ff :CtrlP<CR>
 map <silent> <leader>fr :CommandTFlush<CR>
 map <silent> <leader>be :CtrlPBuffer<CR>
 
+" CtrlP Ignore Folders
+set wildignore+=node_modules
+set wildignore+=*/tmp/*
+set wildignore+=*/log/*
+
+" CtrlP Ignore Folders
+set wildignore+=.git
+
 "syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
