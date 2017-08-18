@@ -29,6 +29,9 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 
+" autoindent
+set autoindent
+
 " Encoding - Use UTF-8
 set encoding=utf-8
 
