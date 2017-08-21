@@ -5,6 +5,11 @@ ZONE_ID="neumiiller.com"
 RECORD_ID="6790614"
 IP=`curl -s http://icanhazip.com/`
 
+if [ "$TOKEN" == "" ]; then
+  echo "\$TOKEN must be set"
+  exit 1
+fi
+
 curl -H "Authorization: Bearer $TOKEN" \
      -H "Content-Type: application/json" \
      -H "Accept: application/json" \
