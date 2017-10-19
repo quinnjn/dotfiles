@@ -8,3 +8,10 @@ function connect {
     tmux new-session -A -s $1
   fi
 }
+
+# update-arch
+# Takes the steps to update Arch linux
+function update-arch {
+  sudo -v
+  sudo pacman -Syy && sudo pacman -Su
+}
