@@ -13,3 +13,4 @@ export EDITOR=$VISUAL
 source ~/.bash_aliases
 source ~/.bash_functions
 source ~/.bash_prompt
+source /usr/share/nvm/init-nvm.sh
