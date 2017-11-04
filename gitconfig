@@ -1,0 +1,10 @@
+[user]
+	name = quinnjn
+	email = quinn@neumiiller.com
+[alias]
+	co = checkout
+	st = status
+[push]
+	default = current
+[core]
+	excludesfile = /home/quinnjn/.gitignore
