@@ -1,4 +1,6 @@
-alias ls="ls --color=auto"
+# Overwrite commands
+alias ls="ls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto"
+alias la="ls -la --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto"
 alias vi=vim
 alias pi="pacman -S"
 alias g="git"
