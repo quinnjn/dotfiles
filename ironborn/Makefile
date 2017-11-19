@@ -25,6 +25,7 @@ x_clean:
 	rm -rf ~/.Xmodmap
 	rm -rf ~/.Xresources
 	rm -rf ~/.xinitrc
+	rm -rf ~/.xsession
 
 x_link:
 	@echo '>>> x_link'
@@ -34,6 +35,7 @@ x_link:
 	ln -sf `pwd`/X/modmap ~/.Xmodmap
 	ln -sf `pwd`/X/resources ~/.Xresources
 	ln -sf `pwd`/xinitrc ~/.xinitrc
+	ln -sf `pwd`/xsession ~/.xsession
 
 x: x_clean x_link
 	@echo '>>> x'
