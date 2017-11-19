@@ -7,3 +7,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 ## Git
 git config --global core.excludesfile ~/.gitignore
 
+if [ -z "$DISPLAY" ] && [ "$(hostname)" == "ironborn" ]; then
+  exec startx
+fi
