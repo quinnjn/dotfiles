@@ -142,3 +142,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# Autostart programs
+exec_always --no-startup-id polybar example
