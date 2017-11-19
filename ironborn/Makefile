@@ -23,6 +23,7 @@ x_clean:
 	rm -rf ~/.Xauthority
 	rm -rf ~/.Xdefaults
 	rm -rf ~/.Xmodmap
+	rm -rf ~/.Xresources
 	rm -rf ~/.xinitrc
 
 x_link:
@@ -31,6 +32,7 @@ x_link:
 	ln -sf `pwd`/X/authority ~/.Xauthority
 	ln -sf `pwd`/X/defaults ~/.Xdefaults
 	ln -sf `pwd`/X/modmap ~/.Xmodmap
+	ln -sf `pwd`/X/resources ~/.Xresources
 	ln -sf `pwd`/xinitrc ~/.xinitrc
 
 x: x_clean x_link
