@@ -154,3 +154,6 @@ exec_always --no-startup-id polybar example
 # colors
 client.focused          #000000 #000000 #ffffff #000000 #000000
 client.focused_inactive #000000 #000000 #aaaaaa #000000 #000000
+
+# HACK to remove window title
+new_window 1pixel
