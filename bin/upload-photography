@@ -1,0 +1,75 @@
+#!/bin/ruby
+
+def sh(cmd)
+  puts "$ #{cmd}"
+
+	IO.popen(cmd) do |data|
+		while line = data.gets
+			puts line
+		end
+	end
+end
+
+module PhotographyBackup
+  def rsync_move(src, dest)
+    sh "rsync --ignore-existing --verbose --compress --progress --archive --remove-source-files #{src} #{dest}"
+  end
+  
+  def braavos_move(src)
+    braavos_dest = "braavos:/media/stor/raw/"
+  
+    puts "Moving from #{src} to #{braavos_dest}"
+    rsync_move src, braavos_dest
+  end
+end
+
+class CameraA6000
+  include PhotographyBackup
+
+  def mv_dir(d, type)
+    if !File.exists?(d)
+      puts "Cannot find #{d}"
+      return
+    end
+
+    folders = Dir.entries(d).select { |f| 
+			!f.start_with?('.') 
+		}
+
+    folders.each { |folder|
+      old = File.join(d, folder)
+      creation_time = File.ctime(old).strftime "%Y-%m-%d"
+      new = File.join(d, creation_time, type, "a6000")
+
+      if File.path(old) != File.path(new)
+        sh "mkdir -p #{new}"
+        sh "mv #{old}/* #{new}"
+      end
+    }
+
+    self.braavos_move(File.join(d, "*"))
+  end
+
+	def remove_empty(dir)
+		sh "find #{dir} -type d -empty -delete"
+	end
+
+  def process(dir)
+    photos_dir = File.join(dir, "DCIM")
+    videos_dir = File.join(dir, "MP_ROOT")
+
+    self.mv_dir(photos_dir, "photos") if File.exists?(photos_dir)
+    self.mv_dir(videos_dir, "videos") if File.exists?(videos_dir)
+
+		remove_empty dir
+  end
+end
+
+def camera_a6000(dir)
+  c = CameraA6000.new
+  c.process(dir)
+end
+
+dir = File.join(Dir.pwd, ARGV[0])
+
+camera_a6000 dir
