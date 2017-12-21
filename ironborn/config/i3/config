@@ -11,10 +11,6 @@
 
 set $mod Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 8
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -30,7 +26,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+q kill
@@ -148,14 +144,11 @@ bindsym XF86AudioRaiseVolume+Shift exec amixer -q set Master 1%+ -q
 bindsym XF86AudioLowerVolume+Shift exec amixer -q set Master 1%- -q
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
-## Media controls
-# bind XF86AudioPrev 
-# bind XF86AudioPlay 
-# bind XF86AudioNext 
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+# Screen brightness controls
+bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
 
 # Autostart programs
 exec_always --no-startup-id polybar example
