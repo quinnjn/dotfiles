@@ -5,11 +5,7 @@ IRC*iconFile: /usr/share/icons/Faenza/apps/32/xchat.png
 URxvt.geometry: 80x22
 ! URXVT FONTS
 !------------------------------------------------
-URxvt.font:xft:Lemon:pixelsize=10
-URxvt.boldFont:xft:Lemon:bold:pixelsize=10
-URxvt.italicfont:xft:Lemon:italic:pixelsize=10
-URxvt.bolditalicFont:xft:Lemon:bold:italic:pixelsize=10
-URxvt*letterSpace: 1
+URxvt*letterSpace: 2
 URxvt*allow_bold: true
 ! URXVT FONT SETTINGS
 !------------------------------------------------
