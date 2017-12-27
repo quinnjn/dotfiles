@@ -32,9 +32,9 @@ module-margin-right = 2
 font-0 = fixed:pixelsize=10;1
 font-1 = FontAwesome:pixelsize=10;1
 
-modules-left = bspwm i3
-modules-center =
-modules-right = volume xbacklight filesystem xkeyboard memory cpu wlan battery temperature date powermenu
+modules-left = i3
+modules-center = 
+modules-right = extweather volume xbacklight filesystem xkeyboard memory cpu wlan battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -332,6 +332,11 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/extweather]
+type = custom/script
+exec = $HOME/.config/polybar/weather-curl
+interval = 300 
 
 [settings]
 screenchange-reload = true
