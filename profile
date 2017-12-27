@@ -10,3 +10,6 @@ export SDKMAN_DIR="/home/quinnjn/.sdkman"
 
 export VISUAL="vim"
 export EDITOR="$VISUAL"
+
+# Disable bell
+set bell-style none
