@@ -335,8 +335,9 @@ menu-2-1-exec = menu-open-0
 
 [module/extweather]
 type = custom/script
-exec = $HOME/.config/polybar/weather-curl
 interval = 300 
+exec = $HOME/.config/polybar/weather-curl all
+click-left = $HOME/.config/polybar/weather-curl summary
 
 [settings]
 screenchange-reload = true

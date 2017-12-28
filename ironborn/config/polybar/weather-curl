@@ -1,12 +1,14 @@
 #!/bin/bash
 
-{
+function get_location() {
   location_csv=`curl --silent freegeoip.net/csv/ | cut -d ',' -f6,9,10`
   location_data=(`echo $location_csv | sed 's/,/\n/g'`)
   location=${location_data[0]}
   lat=${location_data[1]}
   lng=${location_data[2]}
-  
+}
+
+function get_weather() {
   weather_url="https://api.darksky.net/forecast/2cf3878b8080ab15e427d51e9c094bd6/$lat,$lng?exclude=minutely,hourly,flags&units=ca"
   weather_result=$(curl --silent $weather_url)
   
@@ -50,8 +52,21 @@
       icon=$1
       ;;
   esac
-  
-  echo "$location $icon ( $min_temp  $cur_temp  $max_temp) C"
-} || {
-  echo ""
 }
+
+action=$1
+
+get_location
+get_weather
+
+case $action in
+  all)
+    echo "$location $icon [$min_temp|$cur_temp|$max_temp]°C"
+    ;;
+  summary)
+    echo "$location $icon $cur_temp°C"
+    ;;
+  *)
+    ;;
+esac
+
