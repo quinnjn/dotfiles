@@ -15,3 +15,12 @@ function update-arch {
   sudo -v
   sudo pacman -Syy && sudo pacman -Su
 }
+
+# Creates a timelapse given a FPS and filename
+function create-timelapse {
+  fps=$1
+  filename=$2
+
+  echo ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
+  ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
+}
