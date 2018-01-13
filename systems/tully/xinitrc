@@ -1,0 +1,7 @@
+xmodmap ~/.Xmodmap
+exec i3
+exec udiskie
+exec polybar top
+exec polybar main
+exec polybar side
+exec polybar example
