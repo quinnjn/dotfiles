@@ -1,2 +1,2 @@
 # Ignored configs
-config/lutris
+**/config/lutris
