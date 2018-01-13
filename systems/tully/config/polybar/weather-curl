@@ -1,11 +1,10 @@
 #!/bin/bash
 
 function get_location() {
-  location_csv=`curl --silent freegeoip.net/csv/ | cut -d ',' -f6,9,10`
-  location_data=(`echo $location_csv | sed 's/,/\n/g'`)
-  location=${location_data[0]}
-  lat=${location_data[1]}
-  lng=${location_data[2]}
+  location_json=$(curl --silent freegeoip.net/json/)
+  location=$(echo $location_json | jq -r '.city')
+  lat=$(echo $location_json | jq -r '.latitude')
+  lng=$(echo $location_json | jq -r '.longitude')
 }
 
 function get_weather() {
@@ -65,6 +64,12 @@ case $action in
     ;;
   summary)
     echo "$location $icon $cur_temp°C"
+    ;;
+  debug)
+    echo $location_json
+    echo $location
+    echo $weather_url
+    echo $weather_result
     ;;
   *)
     ;;
