@@ -8,3 +8,6 @@ exec polybar top
 exec polybar main
 exec polybar side
 exec polybar example
+
+# Fix the screen resolution for the side monitor
+~/tmp-screen.sh
