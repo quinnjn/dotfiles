@@ -155,6 +155,13 @@ exec_always --no-startup-id polybar example
 exec_always --no-startup-id polybar top
 exec_always --no-startup-id polybar main
 exec_always --no-startup-id polybar side
+exec_always --no-startup-id i3-msg 'workspace 3; exec firefox -new-window -url inbox.google.com -url messenger.com'
+
+# Start programs on certain workspaces
+assign [class="leagueclientux.exe"] 10
+assign [class="leagueclient.exe"] 10 # This is the loading banner
+assign [class="league of legends.exe"] 10
+assign [class="Lutris"] 10
 
 # colors
 client.focused          #000000 #000000 #ffffff #000000 #000000
