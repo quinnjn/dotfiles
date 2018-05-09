@@ -14,3 +14,5 @@ alias reload-bash="source ~/.bashrc"
 # Git aliases
 git config --global alias.co checkout
 git config --global alias.st status
+
+alias lol='lutris lutris:rungame/league-of-legends'
