@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DARK_SKY_KEY="2cf3878b8080ab15e427d51e9c094bd6"
+
 function get_location() {
   location_json=$(curl --silent freegeoip.net/json/)
   location=$(echo $location_json | jq -r '.city')
@@ -8,7 +10,7 @@ function get_location() {
 }
 
 function get_weather() {
-  weather_url="https://api.darksky.net/forecast/2cf3878b8080ab15e427d51e9c094bd6/$lat,$lng?exclude=minutely,hourly,flags&units=ca"
+  weather_url="https://api.darksky.net/forecast/$DARK_SKY_KEY/$lat,$lng?exclude=minutely,hourly,flags&units=ca"
   weather_result=$(curl --silent $weather_url)
   
   icon=$(echo $weather_result | jq -r '.currently.icon')
@@ -24,22 +26,22 @@ function get_weather() {
   
   case $icon in
     clear*)
-      icon=$1
+      icon=
       ;;
     rain)
       icon=
       ;;
     snow)
-      icon=$1
+      icon=
       ;;
     sleet)
-      icon=$1
+      icon=
       ;;
     wind)
-      icon=$1
+      icon="wind"
       ;;
     fog)
-      icon=$1
+      icon="fog"
       ;;
     cloudy)
       icon=
@@ -48,7 +50,7 @@ function get_weather() {
       icon=
       ;;
     *)
-      icon=$1
+      icon=$icon
       ;;
   esac
 }

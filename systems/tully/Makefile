@@ -36,6 +36,7 @@ x_link:
 	ln -sf `pwd`/X/resources ~/.Xresources
 	ln -sf `pwd`/xinitrc ~/.xinitrc
 	ln -sf `pwd`/xsession ~/.xsession
+	ln -sf `pwd`/yaourtrc ~/.yaourtrc
 
 x: x_clean x_link
 	@echo '>>> x'

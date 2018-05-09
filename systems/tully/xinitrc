@@ -1,3 +1,6 @@
+export TERMINAL=termite
+export TERM=xterm-256color
+
 xmodmap ~/.Xmodmap
 exec i3
 exec udiskie
@@ -5,3 +8,6 @@ exec polybar top
 exec polybar main
 exec polybar side
 exec polybar example
+
+# Fix the screen resolution for the side monitor
+~/tmp-screen.sh
