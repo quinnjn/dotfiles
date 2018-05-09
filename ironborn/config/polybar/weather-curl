@@ -2,7 +2,9 @@
 
 function get_location() {
   location_csv=`curl --silent freegeoip.net/csv/ | cut -d ',' -f6,9,10`
+  IFS=$'\n'
   location_data=(`echo $location_csv | sed 's/,/\n/g'`)
+  unset IFS
   location=${location_data[0]}
   lat=${location_data[1]}
   lng=${location_data[2]}
