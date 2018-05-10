@@ -24,20 +24,3 @@ function create-timelapse {
   echo ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
   ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
 }
-
-# better-ls
-# Switch between ls and gls
-# Better formatting
-function better-ls {
-  if [[ "$os" -eq "DARWIN" ]]; then
-    gls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"
-  else
-    ls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"
-  fi
-}
-
-# os
-# returns OS name
-function os {
-  return $OSTYPE
-}

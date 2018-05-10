@@ -1,6 +1,10 @@
 # Overwrite commands
-alias ls='better-ls'
-alias la='better-ls -la'
+if [[ "$OSTYPE" == "DARWIN" ]]; then
+  alias ls='gls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"'
+else
+  alias ls='ls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"'
+fi
+
 alias vi=vim
 alias pi="pacman -S"
 alias g="git"
