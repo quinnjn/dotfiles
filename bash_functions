@@ -24,3 +24,10 @@ function create-timelapse {
   echo ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
   ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
 }
+
+# Creates 2 timelapses in 60fps and 30fps
+function sample-timelapse {
+  ffmpeg -pattern_type glob -i '*.JPG' -r 30 -s hd1080 -crf 18 -preset slow -vcodec libx264 timelapse-30.mp4
+  ffmpeg -pattern_type glob -i '*.JPG' -r 60 -s hd1080 -crf 18 -preset slow -vcodec libx264 timelapse-60.mp4
+  vlc timelapse-30.mp4 timelapse-60.mp4
+}
