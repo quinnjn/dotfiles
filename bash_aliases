@@ -1,5 +1,5 @@
 # Overwrite commands
-if [[ "$OSTYPE" == "DARWIN" ]]; then
+if [[ "$OSTYPE" = *"darwin"* ]]; then
   alias ls='gls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"'
 else
   alias ls='ls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"'
