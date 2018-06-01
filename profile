@@ -13,3 +13,9 @@ export EDITOR="$VISUAL"
 
 # Disable bell
 set bell-style none
+
+# Android Platform Tools
+## OSX
+if [[ -s "$HOME/Library/Android/sdk/platform-tools" ]]; then
+  export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+fi
