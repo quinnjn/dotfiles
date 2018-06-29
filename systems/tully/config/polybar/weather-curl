@@ -1,17 +1,16 @@
 #!/bin/bash
 
+DARK_SKY_KEY="2cf3878b8080ab15e427d51e9c094bd6"
+
 function get_location() {
-  location_csv=`curl --silent freegeoip.net/csv/ | cut -d ',' -f6,9,10`
-  IFS=$'\n'
-  location_data=(`echo $location_csv | sed 's/,/\n/g'`)
-  unset IFS
-  location=${location_data[0]}
-  lat=${location_data[1]}
-  lng=${location_data[2]}
+  location_json=$(curl --silent freegeoip.net/json/)
+  location=$(echo $location_json | jq -r '.city')
+  lat=$(echo $location_json | jq -r '.latitude')
+  lng=$(echo $location_json | jq -r '.longitude')
 }
 
 function get_weather() {
-  weather_url="https://api.darksky.net/forecast/2cf3878b8080ab15e427d51e9c094bd6/$lat,$lng?exclude=minutely,hourly,flags&units=ca"
+  weather_url="https://api.darksky.net/forecast/$DARK_SKY_KEY/$lat,$lng?exclude=minutely,hourly,flags&units=ca"
   weather_result=$(curl --silent $weather_url)
   
   icon=$(echo $weather_result | jq -r '.currently.icon')
@@ -27,22 +26,22 @@ function get_weather() {
   
   case $icon in
     clear*)
-      icon=$1
+      icon=
       ;;
     rain)
       icon=
       ;;
     snow)
-      icon=$1
+      icon=
       ;;
     sleet)
-      icon=$1
+      icon=
       ;;
     wind)
-      icon=$1
+      icon="wind"
       ;;
     fog)
-      icon=$1
+      icon="fog"
       ;;
     cloudy)
       icon=
@@ -51,7 +50,7 @@ function get_weather() {
       icon=
       ;;
     *)
-      icon=$1
+      icon=$icon
       ;;
   esac
 }
@@ -59,18 +58,20 @@ function get_weather() {
 action=$1
 
 get_location
-
-if [[ "${#location_data[@]}" != "3" ]]; then
-  exit
-fi
-
 get_weather
+
 case $action in
   all)
     echo "$location $icon [$min_temp|$cur_temp|$max_temp]°C"
     ;;
   summary)
     echo "$location $icon $cur_temp°C"
+    ;;
+  debug)
+    echo $location_json
+    echo $location
+    echo $weather_url
+    echo $weather_result
     ;;
   *)
     ;;

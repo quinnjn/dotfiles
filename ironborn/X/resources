@@ -1,1 +1,19 @@
 XTerm*selectToClipboard:true
+
+! =================
+! rofi color scheme
+! =================
+#define hl_text #1F1F1F
+#define m_color #ffb52a
+
+rofi.color-enabled:		true
+rofi.separator-style: 	solid
+rofi.color-normal:		argb:00000000, #a89984, argb:00000000,  #ffb52a,  #1F1F1F
+rofi.color-urgent:		argb:00000000, #F99157, argb:00000000,  #F99157,  #1F1F1F
+rofi.color-active:		argb:00000000, #6699CC, argb:00000000,  #6699CC,  #1F1F1F
+rofi.color-window:		argb:ee222222, #ffb52a, #ffb52a
+rofi.font: Roboto regular 12
+rofi.bw:                0
+rofi.padding:           10
+rofi.hide-scrollbar:    true
+rofi.lines: 6

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+ICON_VOLUME_ON=""
+ICON_VOLUME_OFF=""
+
+function speaker_toggle_mute() {
+  amixer --quiet set PCM toggle
+}
+
+function speaker_get_mute() {
+  is_muted=`awk -F"[][]" '{ print $6 }' <(amixer get PCM | tail -n 1)`
+
+  if [ "$is_muted" == "on" ]; then
+    echo -n "$ICON_VOLUME_ON "
+  else
+    echo -n "$ICON_VOLUME_OFF "
+  fi
+}
+
+function speaker_get_volume() {
+  speaker_get_mute
+  amixer get PCM | tail -n 1 | awk -F"[][]" '{ print $2 }'
+}
+
+case $1 in
+  volume-get)
+    speaker_get_volume
+    ;;
+  volume-toggle-mute)
+    speaker_toggle_mute
+    ;;
+  *)
+    ;;
+esac

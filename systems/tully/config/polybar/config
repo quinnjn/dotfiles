@@ -7,16 +7,50 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
-monitor = eDP1
+[bar-size]
 width = 100%
 height = 27
 radius = 0
-fixed-center = false
 
+[bar/main]
+monitor = DisplayPort-0
+width = ${bar-size.width}
+height = ${bar-size.height}
+radius = ${bar-size.radius}
+fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
 
+border-size = 0
+border-color = #000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = FontAwesome:pixelsize=10;1
+font-1 = fixed:pixelsize=10;1
+
+modules-left = i3
+modules-center = 
+modules-right = speaker-volume filesystem memory cpu temperature date powermenu
+
+tray-position = right
+tray-padding = 2
+tray-transparent = true
+
+[bar/top]
+monitor = HDMI-A-0
+width = ${bar-size.width}
+height = ${bar-size.height}
+radius = ${bar-size.radius}
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
@@ -30,53 +64,55 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;1
-font-1 = "Font Awesome 5 Free:pixelsize=10;1"
+font-1 = FontAwesome:pixelsize=10;1
 
 modules-left = i3
 modules-center = 
-modules-right = extweather volume xbacklight filesystem xkeyboard memory cpu wlan battery temperature date powermenu
+modules-right = extweather volume filesystem memory cpu temperature date powermenu
 
 tray-position = right
 tray-padding = 2
 tray-transparent = true
-;tray-background = #0063ff
 
-;wm-restack = bspwm
-;wm-restack = i3
+[bar/side]
+monitor = DVI-D-0
+width = ${bar-size.width}
+height = ${bar-size.height}
+radius = ${bar-size.radius}
+fixed-center = false
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
 
-;override-redirect = true
+border-size = 0
+border-color = #000000
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+padding-left = 0
+padding-right = 2
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = FontAwesome:pixelsize=10;1
+
+modules-left = i3
+modules-center = 
+modules-right = extweather volume filesystem memory cpu temperature date powermenu
+
+tray-position = right
+tray-padding = 2
+tray-transparent = true
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
 [module/filesystem]
 type = internal/fs
 
 mount-0 = /
-mount-1 = /data
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
@@ -106,9 +142,7 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -148,28 +182,6 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = ""
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -186,37 +198,6 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
 
-[module/wlan]
-type = internal/network
-interface = wlp58s0
-interval = 3.0
-
-format-packetloss = <animation-packetloss> <label-connected>
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid% %downspeed%
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-; Only applies if <animation-packetloss> is used
-animation-packetloss-0 = ⚠
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 
-animation-packetloss-1-foreground = #000000
-; Framerate in milliseconds
-animation-packetloss-framerate = 500
-
-ramp-signal-0 =  
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
 [module/date]
 type = internal/date
 interval = 5
@@ -225,9 +206,9 @@ date =
 date-alt = " %Y-%m-%d"
 
 time = %H:%M
-time-alt = %H:%M:%S
+time-alt = %H:%M
 
-format-prefix = 
+;format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
@@ -259,33 +240,6 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC0
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -331,13 +285,21 @@ menu-1-1-exec = sudo reboot
 menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-2-1-exec = menu-open1
 
 [module/extweather]
 type = custom/script
 interval = 300 
 exec = $HOME/.config/polybar/weather-curl all
 click-left = $HOME/.config/polybar/weather-curl summary
+
+[module/speaker-volume]
+type = custom/script
+interval = 1
+format-underline = #fff
+format-warn-underline = ${self.format-underline}
+exec = $HOME/.config/polybar/amixer volume-get
+click-left = $HOME/.config/polybar/amixer volume-toggle-mute
 
 [settings]
 screenchange-reload = true
