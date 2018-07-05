@@ -1,3 +1,10 @@
+#!/bin/bash
+
+function ironborn {
+  # Disable bell
+  set bell-style none
+}
+
 # RVM
 if [[ -s "$HOME/.rvm/bin" ]]; then
   export PATH="$PATH:$HOME/.rvm/bin"
@@ -19,5 +26,6 @@ fi
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 
-# Disable bell
-set bell-style none
+if [[ "$(hostname)" -eq "ironborn" ]]; then
+  ironborn
+fi
