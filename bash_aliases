@@ -9,8 +9,6 @@ alias vi=vim
 alias pi="pacman -S"
 alias g="git"
 alias dev="cd ~/git/github.com/quinnjn"
-
-alias lol='lutris lutris:rungame/league-of-legends'
 alias youtube-dl-mp3='youtube-dl --extract-audio --audio-format mp3 --metadata-from-title "%(artist)s - %(title)s" --add-metadata --audio-quality 0 -v'
 
 # Reload bash
