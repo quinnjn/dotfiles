@@ -11,10 +11,12 @@ if [[ -s "$HOME/.rvm/bin" ]]; then
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 fi
 
-# Android Platform Tools
+# Android
 ## OSX
-if [[ -s "$HOME/Library/Android/sdk/platform-tools" ]]; then
-  export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+if [[ -s "$HOME/Library/Android/sdk" ]]; then
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+  export PATH="$PATH:$ANDROID_HOME/platform-tools"
+  export PATH="$PATH:$ANDROID_HOME/tools"
 fi
 
 # SDKMAN
