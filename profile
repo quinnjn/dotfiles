@@ -31,3 +31,5 @@ export EDITOR="$VISUAL"
 if [[ "$(hostname)" -eq "ironborn" ]]; then
   ironborn
 fi
+
+ssh-add &> /dev/null
