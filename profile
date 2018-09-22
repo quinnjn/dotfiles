@@ -1,15 +1,35 @@
+#!/bin/bash
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+function ironborn {
+  # Disable bell
+  set bell-style none
+}
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# RVM
+if [[ -s "$HOME/.rvm/bin" ]]; then
+  export PATH="$PATH:$HOME/.rvm/bin"
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/quinnjn/.sdkman"
-[[ -s "/home/quinnjn/.sdkman/bin/sdkman-init.sh" ]] && source "/home/quinnjn/.sdkman/bin/sdkman-init.sh"
+# Android
+## OSX
+if [[ -s "$HOME/Library/Android/sdk" ]]; then
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+  export PATH="$PATH:$ANDROID_HOME/platform-tools"
+  export PATH="$PATH:$ANDROID_HOME/tools"
+fi
+
+# SDKMAN
+if [[ -s "/home/quinnjn/.sdkman/bin/sdkman-init.sh" ]]; then
+  export SDKMAN_DIR="/home/quinnjn/.sdkman"
+  source "/home/quinnjn/.sdkman/bin/sdkman-init.sh"
+fi 
 
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 
-# Disable bell
-set bell-style none
+if [[ "$(hostname)" -eq "ironborn" ]]; then
+  ironborn
+fi
+
+ssh-add &> /dev/null

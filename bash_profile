@@ -7,6 +7,10 @@ export PATH="$PATH:$HOME/.rvm/bin"
 ## Git
 git config --global core.excludesfile ~/.gitignore
 
-if [ -x "$(command -v startx)" ] && [ -z "$DISPLAY" ]; then
-  exec startx
+if [ -z "$SSH_CONNECTION" ]; then
+  ## Local connections
+  if [ -x "$(command -v startx)" ] && [ -z "$DISPLAY" ]; then
+    exec startx
+  fi
 fi
+

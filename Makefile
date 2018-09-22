@@ -50,6 +50,8 @@ vim_clean:
 vim_build:
 	@echo '>>> vim_build'
 
+	mkdir ~/.vim
+	cp -r vim/* ~/.vim
 	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
 
