@@ -152,6 +152,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightnes
 
 # Autostart programs
 exec_always --no-startup-id polybar example
+# flux alternative
+exec_always --no-startup-id redshift
 
 # colors
 client.focused          #000000 #000000 #ffffff #000000 #000000
