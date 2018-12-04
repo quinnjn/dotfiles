@@ -29,3 +29,14 @@ function create-timelapse {
   echo ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
   ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
 }
+
+# Without arguments goes to the dev folder
+# With arguments, cds into that repo if it exists in the dev folder or clones it
+function git-repo {
+  org=$1
+  repo=$2
+
+  dev
+  cd ..
+  cd $org/$repo || git clone git@github.com:$org/$repo.git $org/$repo && cd $org/$repo
+}
