@@ -39,6 +39,7 @@ function git-repo {
   dev
   cd ..
   cd $org/$repo || git clone git@github.com:$org/$repo.git $org/$repo && cd $org/$repo
+}
 
 # Creates 2 timelapses in 60fps and 30fps
 function sample-timelapse {
