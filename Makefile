@@ -2,7 +2,9 @@
 #
 # This script will replace files found your home directory!!! Use discretion!
 
-all: bash scripts vim
+UNAME := $(shell uname)
+
+all: bash scripts vim system
 	@echo '>>> all'
 
 # Links bash files to the users directory
@@ -57,3 +59,9 @@ vim_build:
 
 vim: vim_clean vim_build
 	@echo '>>> vim'
+
+# System based steps
+system:
+ifeq ($(UNAME),Darwin)
+	./systems/macbook/defaults.sh
+endif
