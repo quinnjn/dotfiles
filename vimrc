@@ -10,6 +10,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'udalov/kotlin-vim'
 Plugin 'mtth/scratch.vim'
+Plugin 'tpope/vim-fugitive'
 
 " Vundle teardown
 call vundle#end()

@@ -30,6 +30,17 @@ function create-timelapse {
   ffmpeg -pattern_type glob -i '*.JPG' -r $fps -s hd1080 -crf 18 -preset slow -vcodec libx264 $filename
 }
 
+# Without arguments goes to the dev folder
+# With arguments, cds into that repo if it exists in the dev folder or clones it
+function git-repo {
+  org=$1
+  repo=$2
+
+  dev
+  cd ..
+  cd $org/$repo || git clone git@github.com:$org/$repo.git $org/$repo && cd $org/$repo
+}
+
 # Creates 2 timelapses in 60fps and 30fps
 function sample-timelapse {
   ffmpeg -pattern_type glob -i '*.JPG' -r 30 -s hd1080 -crf 18 -preset slow -vcodec libx264 timelapse-30.mp4
