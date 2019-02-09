@@ -11,6 +11,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'udalov/kotlin-vim'
 Plugin 'mtth/scratch.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'rustushki/JavaImp.vim'
 
 " Vundle teardown
 call vundle#end()
@@ -66,3 +67,6 @@ set wildignore+=.git
 
 "syntastic
 source ~/.vim/syntastic.vim
+
+"JavaImp
+source ~/.vim/javaimp.vim

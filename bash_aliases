@@ -19,3 +19,8 @@ git config --global alias.co checkout
 git config --global alias.st status
 
 alias lol='lutris lutris:rungame/league-of-legends'
+
+# OSX commands
+if [[ "$OSTYPE" = *"darwin"* ]]; then
+  alias fix-audio='sudo killall coreaudiod'
+fi

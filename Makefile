@@ -64,4 +64,5 @@ vim: vim_clean vim_build
 system:
 ifeq ($(UNAME),Darwin)
 	./systems/macbook/defaults.sh
+	./systems/macbook/brew.sh
 endif

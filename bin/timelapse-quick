@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+set -u
+set -o pipefail
+
+ffmpeg -r 24 -pattern_type glob -i '*.JPG' -s hd1080 -vcodec libx264 timelapse-quick.mp4
