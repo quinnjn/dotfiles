@@ -1,0 +1,16 @@
+#!/bin/bash
+
+vol=$(amixer sget Master | grep 'Right:' | awk -F '[][]' '{print $2}')
+vol=${vol::-1}
+
+if [[ vol -eq "0" ]]; then
+  vol="   0%"
+elif (( vol < "0")); then
+  vol="   $vol%"
+elif (( vol <= "50")); then
+  vol=" $vol%"
+else
+  vol=" $vol%"
+fi
+
+echo $vol
