@@ -6,5 +6,3 @@
 	st = status
 [push]
 	default = current
-[core]
-	excludesfile = ~/.gitignore
