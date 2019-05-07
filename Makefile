@@ -7,6 +7,17 @@ UNAME := $(shell uname)
 all: bash scripts vim system
 	@echo '>>> all'
 
+bash_clean:
+	@echo '>>> bash_clean'
+
+	rm -rf ~/bash
+
+bash_copy:
+	@echo '>>> bash_copy'
+
+	mkdir ~/bash
+	cp -r bash/* ~/bash
+
 # Links bash files to the users directory
 bash_link:
 	@echo '>>> bash_link'
@@ -23,7 +34,7 @@ bash_link:
 	ln -sf `pwd`/profile ~/.profile
 	ln -sf `pwd`/zshrc ~/.zshrc
 
-bash: bash_link
+bash: bash_clean bash_copy bash_link
 	@echo '>>> bash'
 
 # Cleans out the ~/bin directory
