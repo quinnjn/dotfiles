@@ -74,6 +74,7 @@ vim: vim_clean vim_build
 # System based steps
 system:
 ifeq ($(UNAME),Darwin)
+	@echo '>>> macbook system scripts'
 	./systems/macbook/defaults.sh
 	./systems/macbook/brew.sh
 endif
