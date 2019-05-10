@@ -4,19 +4,23 @@
 
 UNAME := $(shell uname)
 
-all: bash scripts vim system
+all: bash scripts vim system configs
 	@echo '>>> all'
 
 bash_clean:
 	@echo '>>> bash_clean'
 
-	rm -rf ~/bash
+	rm -rf ~/bash/aliases
+	rm -rf ~/bash/functions
+	rm -rf ~/bash/profile
 
 bash_copy:
 	@echo '>>> bash_copy'
 
-	mkdir ~/bash
-	cp -r bash/* ~/bash
+	mkdir -p ~/bash
+	cp -r bash/aliases ~/bash/
+	cp -r bash/functions ~/bash/
+	cp -r bash/profile ~/bash/
 
 # Links bash files to the users directory
 bash_link:
@@ -47,7 +51,7 @@ scripts_clean:
 scripts_copy:
 	@echo '>>> scripts_copy'
 
-	mkdir ~/bin
+	mkdir -p ~/bin
 	cp -r bin/* ~/bin
 
 scripts: scripts_clean scripts_copy
@@ -78,3 +82,33 @@ ifeq ($(UNAME),Darwin)
 	./systems/macbook/defaults.sh
 	./systems/macbook/brew.sh
 endif
+
+configs: hyper templates
+
+hyper: hyper_clean hyper_link
+
+hyper_clean:
+	@echo '>>> hyper_clean'
+
+	rm ~/.hyper.js
+	rm -rf ~/.hyper_plugins/
+
+hyper_link:
+	@echo '>>> hyper_link'
+
+	ln -sf `pwd`/hyper/hyper.js ~/.hyper.js
+
+	mkdir -p ~/.hyper_plugins
+	cp -r hyper/plugins ~/.hyper_plugins
+
+templates: templates_clean templates_link
+
+templates_clean:
+	@echo '>>> templates_clean'
+
+	rm -rf ~/.templates
+	
+templates_link:
+	@echo '>>> templates_link'
+
+	cp -r templates ~/.templates

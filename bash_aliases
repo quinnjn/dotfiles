@@ -1,3 +1,3 @@
-for f in ~/bash/aliases/*; do
+for f in ~/bash/alias*/*; do
   source $f
 done
