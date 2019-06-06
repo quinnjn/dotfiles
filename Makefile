@@ -83,23 +83,7 @@ ifeq ($(UNAME),Darwin)
 	./systems/macbook/brew.sh
 endif
 
-configs: hyper templates
-
-hyper: hyper_clean hyper_link
-
-hyper_clean:
-	@echo '>>> hyper_clean'
-
-	rm ~/.hyper.js
-	rm -rf ~/.hyper_plugins/
-
-hyper_link:
-	@echo '>>> hyper_link'
-
-	ln -sf `pwd`/hyper/hyper.js ~/.hyper.js
-
-	mkdir -p ~/.hyper_plugins
-	cp -r hyper/plugins ~/.hyper_plugins
+configs: templates
 
 templates: templates_clean templates_link
 
