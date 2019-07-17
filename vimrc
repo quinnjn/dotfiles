@@ -70,3 +70,6 @@ source ~/.vim/syntastic.vim
 
 "JavaImp
 source ~/.vim/javaimp.vim
+
+"kotlin-vim
+source ~/.vim/udalov-kotlin-vim.vim
