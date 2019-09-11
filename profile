@@ -25,6 +25,8 @@ if [[ -s "/home/quinnjn/.sdkman/bin/sdkman-init.sh" ]]; then
   source "/home/quinnjn/.sdkman/bin/sdkman-init.sh"
 fi 
 
+source ~/bash/profile/debian.sh
+
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 
