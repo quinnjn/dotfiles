@@ -152,6 +152,8 @@ bindsym XF86MonBrightnessDown exec echo $((`cat /sys/class/backlight/intel_backl
 exec --no-startup-id polybar top
 # flux alternative
 exec --no-startup-id redshift
+# feh for background image
+exec --no-startup-id feh ~/.config/feh/config
 
 # colors
 client.focused          #000000 #000000 #ffffff #000000 #000000
