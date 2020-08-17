@@ -1,16 +1,24 @@
 #!/bin/bash
 
-vol=$(amixer sget Master | grep 'Right:' | awk -F '[][]' '{print $2}')
-vol=${vol::-1}
+amixer_status=$(amixer sget Master)
+right_speaker=$(echo $amixer_status | grep 'Right:')
+volume=$(echo $right_speaker | awk -F '[][]' '{ print $2 }')
+powered=$(echo $right_speaker | awk -F '[][]' '{ print $4 }')
 
-if [[ vol -eq "0" ]]; then
-  vol="   0%"
-elif (( vol < "0")); then
-  vol="   $vol%"
-elif (( vol <= "50")); then
-  vol=" $vol%"
+#vol=$(amixer sget Master | grep 'Right:' | awk -F '[][]' '{print $2}')
+volume=${volume::-1}
+
+
+if [[ "$powered" == "off" ]]; then
+  volume="   $volume%"
+elif [[ volume -eq "0" ]]; then
+  volume="   $volume%"
+elif (( volume < "0")); then
+  volume="   $volume%"
+elif (( volume <= "50")); then
+  volume=" $volume%"
 else
-  vol=" $vol%"
+  volume=" $volume%"
 fi
 
-echo $vol
+echo $volume
