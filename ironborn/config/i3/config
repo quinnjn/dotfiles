@@ -145,10 +145,8 @@ bindsym XF86AudioLowerVolume+Shift exec amixer -q set Master 1%- -q
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 # Screen brightness controls
-bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec echo $((`cat /sys/class/backlight/intel_backlight/brightness` + 75)) | sudo tee /sys/class/backlight/intel_backlight/brightness
+bindsym XF86MonBrightnessDown exec echo $((`cat /sys/class/backlight/intel_backlight/brightness` - 75)) | sudo tee /sys/class/backlight/intel_backlight/brightness
 
 # Autostart programs
 exec --no-startup-id polybar top
