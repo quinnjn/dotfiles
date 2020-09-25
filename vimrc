@@ -12,9 +12,14 @@ Plugin 'udalov/kotlin-vim'
 Plugin 'mtth/scratch.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rustushki/JavaImp.vim'
+" Color scheme
+Plugin 'srcery-colors/srcery-vim'
 
 " Vundle teardown
 call vundle#end()
+
+" Colorscheme
+colorscheme srcery
 
 " Show line numbers
 set number
@@ -24,9 +29,6 @@ set background=dark
 
 " Syntax highlight
 syntax on
-
-" Set a different theme
-colorscheme zellner
 
 " 2 space tabs
 filetype plugin indent on
