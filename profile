@@ -25,7 +25,12 @@ if [[ -s "/home/quinnjn/.sdkman/bin/sdkman-init.sh" ]]; then
   source "/home/quinnjn/.sdkman/bin/sdkman-init.sh"
 fi 
 
-source ~/bash/profile/debian.sh
+# system based scripts
+case "$(uname -a)" in
+  *Debian*) 
+    source ~/bash/profile/debian.sh
+    ;;
+esac
 
 export VISUAL="vim"
 export EDITOR="$VISUAL"
