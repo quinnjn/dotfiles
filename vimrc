@@ -42,17 +42,17 @@ set statusline+=\ %1*%P%*
 """"""""""""""
 colorscheme srcery                                                      " Colorscheme
 
-highlight folded       cterm=bold ctermbg=none ctermfg=5
-highlight vertsplit    cterm=none ctermbg=none ctermfg=9
-highlight statusline   cterm=none ctermbg=none ctermfg=9
-highlight statuslinenc cterm=none ctermbg=none ctermfg=9
-highlight specialkey   cterm=none ctermbg=none ctermfg=1
-highlight matchparen   cterm=none ctermbg=none ctermfg=5
-highlight wildmenu     cterm=bold ctermbg=none ctermfg=3
-highlight visual       cterm=bold ctermbg=7    ctermfg=none
-highlight user1        cterm=none ctermbg=none ctermfg=3
-highlight normal                  ctermbg=none              guibg=none  " Disable background color
-highlight directory               ctermfg=Red                           " Colour NERDTree directory
+highlight folded       cterm=BOLD ctermbg=NONE ctermfg=5
+highlight vertsplit    cterm=NONE ctermbg=NONE ctermfg=9
+highlight statusline   cterm=NONE ctermbg=NONE ctermfg=9
+highlight statuslinenc cterm=NONE ctermbg=NONE ctermfg=9
+highlight specialkey   cterm=NONE ctermbg=NONE ctermfg=1
+highlight matchparen   cterm=NONE ctermbg=NONE ctermfg=5
+highlight wildmenu     cterm=BOLD ctermbg=NONE ctermfg=3
+highlight visual       cterm=BOLD ctermbg=7    ctermfg=NONE
+highlight user1        cterm=NONE ctermbg=NONE ctermfg=3
+highlight normal       cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE  " Disable background color
+highlight directory    cterm=NONE ctermfg=Red                           " Colour NERDTree directory
 
 " Mappings
 """""""""""""""""""
