@@ -1,19 +1,16 @@
-" Vundle setup
-set rtp+=~/.vim/bundle/Vundle.vim " set the runtime path to include Vundle and initialize
-call vundle#begin()
+" vim-plug
+call plug#begin('~/.vim/vim-plug')
 
-" Vundle packages
-Plugin 'gmarik/Vundle.vim'        " Plugin manager
-Plugin 'scrooloose/nerdtree'      " Tree file explorer
-Plugin 'tomtom/tcomment_vim'      " Comments out text depending on the file type
-Plugin 'kien/ctrlp.vim'           " Fuzzy finder
-Plugin 'vim-syntastic/syntastic'  " Syntax checker
-Plugin 'mtth/scratch.vim'         " scratch window. gs to activate
-Plugin 'tpope/vim-fugitive'       " Git wrapper in vim
-Plugin 'srcery-colors/srcery-vim' " Color scheme
+Plug 'gmarik/Vundle.vim'        " Plugin manager
+Plug 'scrooloose/nerdtree'      " Tree file explorer
+Plug 'tomtom/tcomment_vim'      " Comments out text depending on the file type
+Plug 'kien/ctrlp.vim'           " Fuzzy finder
+Plug 'vim-syntastic/syntastic'  " Syntax checker
+Plug 'mtth/scratch.vim'         " scratch window. gs to activate
+Plug 'tpope/vim-fugitive'       " Git wrapper in vim
+Plug 'srcery-colors/srcery-vim' " Color scheme
 
-" Vundle teardown
-call vundle#end()
+call plug#end()
 
 " General settings
 """"""""""""""""""
