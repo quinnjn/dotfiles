@@ -10,6 +10,11 @@ Plug 'mtth/scratch.vim'         " scratch window. gs to activate
 Plug 'tpope/vim-fugitive'       " Git wrapper in vim
 Plug 'srcery-colors/srcery-vim' " Color scheme
 
+" Conquer of Completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+
 call plug#end()
 
 " General settings
@@ -61,6 +66,18 @@ map <silent> <LocalLeader>cc :TComment<CR>
 map <silent> <LocalLeader>ff :CtrlP<CR>
 map <silent> <LocalLeader>fr :CommandTFlush<CR>
 map <silent> <LocalLeader>be :CtrlPBuffer<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Functions
+"""""""""""
+" Displays vim help, or coc hover
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
 
 " Plugin settings
 """""""""""""""""""
@@ -69,6 +86,7 @@ set wildignore+=*/tmp/*          " Ignore tmp folders
 set wildignore+=*/log/*          " Ignore log folders
 set wildignore+=.git             " Ignore git folder
 
-"syntastic
+
+" syntastic
 """"""""""
 source ~/.vim/syntastic.vim
