@@ -89,6 +89,8 @@ ifeq ($(UNAME),Darwin)
 	@echo '=> macbook system scripts'
 	./systems/macbook/defaults.sh
 	./systems/macbook/brew.sh
+	ln -sf `pwd`/systems/macbook/sleepwatcher/sleep ~/.sleep
+	ln -sf `pwd`/systems/macbook/sleepwatcher/wake ~/.wake
 endif
 
 configs: templates

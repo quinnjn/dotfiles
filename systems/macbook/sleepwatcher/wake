@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Enable bluetooth
+$(which blueutil) -p 1
