@@ -91,6 +91,7 @@ ifeq ($(UNAME),Darwin)
 	./systems/macbook/brew.sh
 	ln -sf `pwd`/systems/macbook/sleepwatcher/sleep ~/.sleep
 	ln -sf `pwd`/systems/macbook/sleepwatcher/wake ~/.wake
+	ln -sf `pwd`/systems/macbook/bitbar ~/.bitbar
 endif
 
 configs: templates
