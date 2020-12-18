@@ -37,11 +37,11 @@ set fillchars+=fold:۰,   " filling character
 set fillchars+=diff:·,   " deleted lines in diff 
 
 set statusline=
-set statusline+=%1*%f%*
-set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%)
-set statusline+=%=
-set statusline+=[%(%l,%c%V%)]
-set statusline+=\ %1*%P%*
+set statusline+=%1*%f%*                             " ?filename
+set statusline+=%(\ [%{fugitive#head()}%Y%R%W%M]%)  " [git head,filetype,readonly,preview window, modified]
+set statusline+=%=                                  " fill between
+set statusline+=[%(%l,%c%V%)]                       " [line, column]
+set statusline+=\ %1*%P%*                           " file percentage
 
 " Color Scheme
 """"""""""""""
