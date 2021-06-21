@@ -90,7 +90,7 @@ ifeq ($(UNAME),Darwin)
 	./systems/macbook/defaults.sh
 	ln -sf `pwd`/systems/macbook/sleepwatcher/sleep ~/.sleep
 	ln -sf `pwd`/systems/macbook/sleepwatcher/wake ~/.wake
-	ln -sf `pwd`/systems/macbook/bitbar ~/.bitbar
+	ln -sf `pwd`/systems/macbook/bitbar ~/Library/Application\ Support/xbar/plugins 
 
 brew:
 	./systems/macbook/brew.sh
