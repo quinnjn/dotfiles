@@ -13,5 +13,5 @@ fi
 
 brew upgrade
 brew upgrade --cask
-brew list --formula > brew-formulas
-brew list --cask > brew-casks
+brew bundle dump
+brew bundle --force cleanup
