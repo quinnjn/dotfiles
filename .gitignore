@@ -1,2 +1,4 @@
 # Ignored configs
 **/config/lutris
+
+.DS_Store
