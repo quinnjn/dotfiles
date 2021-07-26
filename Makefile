@@ -74,13 +74,17 @@ vim_clean:
 vim_build:
 	@echo '=> vim_build'
 
-	mkdir ~/.vim
+	mkdir -p ~/.vim
 	cp -r vim/* ~/.vim
+
+vim_install:
+	@echo '=> vim_install'
+
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +PlugInstall +qall
 
-vim: vim_clean vim_build
+vim: vim_clean vim_build vim_install
 	@echo '=> vim'
 
 # System based steps
