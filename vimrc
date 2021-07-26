@@ -5,7 +5,7 @@ Plug 'gmarik/Vundle.vim'        " Plugin manager
 Plug 'scrooloose/nerdtree'      " Tree file explorer
 Plug 'tomtom/tcomment_vim'      " Comments out text depending on the file type
 Plug 'kien/ctrlp.vim'           " Fuzzy finder
-Plug 'vim-syntastic/syntastic'  " Syntax checker
+Plug 'dense-analysis/ale'       " Linting
 Plug 'mtth/scratch.vim'         " scratch window. gs to activate
 Plug 'tpope/vim-fugitive'       " Git wrapper in vim
 Plug 'srcery-colors/srcery-vim' " Color scheme
@@ -86,7 +86,6 @@ set wildignore+=*/tmp/*          " Ignore tmp folders
 set wildignore+=*/log/*          " Ignore log folders
 set wildignore+=.git             " Ignore git folder
 
-
-" syntastic
-""""""""""
-source ~/.vim/syntastic.vim
+" ALE
+" """
+source ~/.vim/ale.vim
