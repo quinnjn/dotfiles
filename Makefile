@@ -4,7 +4,7 @@
 
 UNAME := $(shell uname)
 
-all: bash scripts vim tmux system configs
+all: clean bash scripts vim tmux system configs
 	@echo '=> all'
 
 bash_clean:
@@ -84,7 +84,7 @@ vim_install:
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +PlugInstall +qall
 
-vim: vim_clean vim_build vim_install
+vim: vim_build vim_install
 	@echo '=> vim'
 
 # System based steps
@@ -113,3 +113,5 @@ templates_link:
 	@echo '=> templates_link'
 
 	cp -r templates ~/.templates
+
+clean: vim_clean

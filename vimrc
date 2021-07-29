@@ -45,7 +45,7 @@ set statusline+=\ %1*%P%*                           " file percentage
 
 " Color Scheme
 """"""""""""""
-colorscheme srcery                                                      " Colorscheme
+silent! colorscheme srcery                          " Colorscheme
 
 highlight folded       cterm=BOLD ctermbg=NONE ctermfg=5
 highlight vertsplit    cterm=NONE ctermbg=NONE ctermfg=9
