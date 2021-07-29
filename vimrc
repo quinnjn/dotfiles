@@ -9,6 +9,7 @@ Plug 'dense-analysis/ale'       " Linting
 Plug 'mtth/scratch.vim'         " scratch window. gs to activate
 Plug 'tpope/vim-fugitive'       " Git wrapper in vim
 Plug 'srcery-colors/srcery-vim' " Color scheme
+Plug 'artur-shaik/vim-javacomplete2'	" java completion for vim
 
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -89,3 +90,7 @@ set wildignore+=.git             " Ignore git folder
 " ALE
 " """
 source ~/.vim/ale.vim
+
+" vim-javacomplete2
+" """""""""""""""""
+source ~/.vim/vim-javacomplete2.vim
