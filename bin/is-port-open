@@ -1,0 +1,9 @@
+#!/bin/bash
+
+port=$1
+
+if [[ $(lsof -i :$port | grep LISTEN) ]]; then
+  return 0
+fi
+
+return 1
