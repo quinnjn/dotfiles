@@ -1,7 +1,14 @@
+# Bring in all our config
+for config in ~/zsh/config/*; do
+  source $config
+done
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Bring in all our aliases
+for alias in ~/zsh/aliases/*; do
+  source $alias
+done
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/quinnjn/.sdkman"
-[[ -s "/home/quinnjn/.sdkman/bin/sdkman-init.sh" ]] && source "/home/quinnjn/.sdkman/bin/sdkman-init.sh"
+# Bring in all our functions
+for function in ~/zsh/functions/*; do
+  source $function
+done
