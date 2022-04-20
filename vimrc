@@ -36,7 +36,7 @@ set fillchars+=stl:~,    " status line of current window
 set fillchars+=stlnc:-,  " status line of non-current window
 set fillchars+=vert:│,   " vertical seperator for vsplit
 set fillchars+=fold:۰,   " filling character
-set fillchars+=diff:·,   " deleted lines in diff 
+set fillchars+=diff:·,   " deleted lines in diff
 
 set statusline=
 set statusline+=%1*%f%*                             " ?filename
