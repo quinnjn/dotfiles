@@ -10,10 +10,12 @@ all: clean zsh bash scripts vim tmux system configs
 zsh_clean:
 	@echo '=> zsh_clean'
 	rm -rf ~/zsh/functions
+	rm -rf ~/zsh/aliases
 
 zsh_copy:
 	@echo '=> zsh_copy'
 	cp -r zsh/functions ~/zsh/functions
+	cp -r zsh/aliases ~/zsh/aliases
 
 zsh: zsh_clean zsh_copy
 	@echo '=> zsh'
