@@ -4,8 +4,19 @@
 
 UNAME := $(shell uname)
 
-all: clean bash scripts vim tmux system configs
+all: clean zsh bash scripts vim tmux system configs
 	@echo '=> all'
+
+zsh_clean:
+	@echo '=> zsh_clean'
+	rm -rf ~/zsh/functions
+
+zsh_copy:
+	@echo '=> zsh_copy'
+	cp -r zsh/functions ~/zsh/functions
+
+zsh: zsh_clean zsh_copy
+	@echo '=> zsh'
 
 bash_clean:
 	@echo '=> bash_clean'
