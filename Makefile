@@ -4,7 +4,7 @@
 
 UNAME := $(shell uname)
 
-all: clean zsh bash scripts vim tmux system configs
+all: clean zsh bash scripts vim tmux system config
 	@echo '=> all'
 
 zsh_clean:
@@ -109,24 +109,22 @@ ifeq ($(UNAME),Darwin)
 	./systems/macbook/defaults.sh
 	ln -sf `pwd`/systems/macbook/sleepwatcher/sleep ~/.sleep
 	ln -sf `pwd`/systems/macbook/sleepwatcher/wake ~/.wake
-	ln -sf `pwd`/systems/macbook/bitbar ~/Library/Application\ Support/xbar/plugins 
+	ln -sf `pwd`/systems/macbook/bitbar ~/Library/Application\ Support/xbar/plugins
 
 brew:
 	./systems/macbook/brew.sh
 endif
 
-configs: templates
+config: config_clean config_link
 
-templates: templates_clean templates_link
+config_clean:
+	@echo '=> config_clean'
 
-templates_clean:
-	@echo '=> templates_clean'
+	rm -rf ~/.config/iterm2
 
-	rm -rf ~/.templates
-	
-templates_link:
-	@echo '=> templates_link'
+config_link:
+	@echo '=> config_link'
 
-	cp -r templates ~/.templates
+	cp -r config/iterm2 ~/.config/iterm2
 
 clean: vim_clean
