@@ -1,6 +1,7 @@
 [alias]
 	co = checkout
 	st = status
+	today = !git log --since=midnight --author=$(git config user.name) --oneline
 
 [push]
 	default = current
