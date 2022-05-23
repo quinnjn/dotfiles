@@ -3,6 +3,7 @@
 brew() {
   command brew upgrade
   command brew upgrade --cask
+  command brew $@
   command brew bundle --force dump
   command brew bundle --force cleanup
 }

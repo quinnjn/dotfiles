@@ -9,6 +9,7 @@ all: clean zsh bash scripts vim tmux system config
 
 zsh_clean:
 	@echo '=> zsh_clean'
+	mkdir -p ~/zsh
 	rm -rf ~/zsh/config
 	rm -rf ~/zsh/aliases
 	rm -rf ~/zsh/functions
@@ -107,9 +108,6 @@ system:
 ifeq ($(UNAME),Darwin)
 	@echo '=> macbook system scripts'
 	./systems/macbook/defaults.sh
-	ln -sf `pwd`/systems/macbook/sleepwatcher/sleep ~/.sleep
-	ln -sf `pwd`/systems/macbook/sleepwatcher/wake ~/.wake
-	ln -sf `pwd`/systems/macbook/bitbar ~/Library/Application\ Support/xbar/plugins
 
 brew:
 	./systems/macbook/brew.sh
