@@ -1,8 +1,18 @@
-[user]
-	name = quinnjn
-	email = quinn@neumiiller.com
 [alias]
 	co = checkout
 	st = status
+
 [push]
 	default = current
+
+[commit]
+	gpgSign = true
+
+[gpg]
+	program = gpg
+
+[includeIf "gitdir:~/work/"]
+	path=~/.gitconfig.work
+
+[includeIf "gitdir:~/git/github.com/quinnjn/"]
+	path=~/.gitconfig.personal

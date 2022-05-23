@@ -50,6 +50,8 @@ bash_link:
 	ln -sf `pwd`/vimrc ~/.vimrc
 	ln -sf `pwd`/gitignore ~/.gitignore
 	ln -sf `pwd`/gitconfig ~/.gitconfig
+	ln -sf `pwd`/gitconfig.work ~/.gitconfig.work
+	ln -sf `pwd`/gitconfig.personal ~/.gitconfig.personal
 	ln -sf `pwd`/profile ~/.profile
 	ln -sf `pwd`/zshrc ~/.zshrc
 
