@@ -21,5 +21,6 @@
 
 [includeIf "gitdir:~/git/github.com/quinnjn/"]
 	path=~/.gitconfig.personal
+
 [core]
 	excludesfile = ~/.gitignore

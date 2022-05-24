@@ -33,13 +33,17 @@ bash_link:
 	ln -sf `pwd`/bash_prompt ~/.bash_prompt
 	ln -sf `pwd`/bashrc ~/.bashrc
 	ln -sf `pwd`/vimrc ~/.vimrc
-	ln -sf `pwd`/gitignore ~/.gitignore
 	ln -sf `pwd`/gitconfig ~/.gitconfig
 	ln -sf `pwd`/gitconfig.work ~/.gitconfig.work
 	ln -sf `pwd`/gitconfig.personal ~/.gitconfig.personal
 	ln -sf `pwd`/profile ~/.profile
 	ln -sf `pwd`/zshrc ~/.zshrc
 	ln -sf `pwd`/zshenv ~/.zshenv
+
+	# Git wants to rewrite ~ to the direct path
+	# copying this file to location will ignore
+	# that rewrite.
+	cp `pwd`/gitignore ~/.gitignore
 
 bash: bash_link
 	@echo '=> bash'
