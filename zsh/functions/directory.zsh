@@ -8,6 +8,11 @@ dotfiles() {
   cd ~/git/github.com/quinnjn/dotfiles
 }
 
+# Change directory to work folder
+work() {
+  cd ~/work/
+}
+
 # Make ls prettier
 ls() {
   gls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"
