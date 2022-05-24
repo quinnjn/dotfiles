@@ -23,21 +23,6 @@ zsh_copy:
 zsh: zsh_clean zsh_copy
 	@echo '=> zsh'
 
-bash_clean:
-	@echo '=> bash_clean'
-
-	rm -rf ~/bash/aliases
-	rm -rf ~/bash/functions
-	rm -rf ~/bash/profile
-
-bash_copy:
-	@echo '=> bash_copy'
-
-	mkdir -p ~/bash
-	cp -r bash/aliases ~/bash/
-	cp -r bash/functions ~/bash/
-	cp -r bash/profile ~/bash/
-
 # Links bash files to the users directory
 bash_link:
 	@echo '=> bash_link'
@@ -54,8 +39,9 @@ bash_link:
 	ln -sf `pwd`/gitconfig.personal ~/.gitconfig.personal
 	ln -sf `pwd`/profile ~/.profile
 	ln -sf `pwd`/zshrc ~/.zshrc
+	ln -sf `pwd`/zshenv ~/.zshenv
 
-bash: bash_clean bash_copy bash_link
+bash: bash_link
 	@echo '=> bash'
 
 # Cleans out the ~/bin directory
