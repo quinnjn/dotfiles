@@ -1,2 +1,4 @@
-*.swp
+# vim swp files
+.*.sw?
+
 node_modules/
