@@ -16,6 +16,9 @@
 [gpg]
 	program = gpg
 
+[diff]
+	wserrorhighlight = all
+
 [includeIf "gitdir:~/work/"]
 	path=~/.gitconfig.work
 
