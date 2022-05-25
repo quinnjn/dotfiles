@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'       " Git wrapper in vim
 Plug 'srcery-colors/srcery-vim' " Color scheme
 Plug 'artur-shaik/vim-javacomplete2'	" java completion for vim
 Plug 'editorconfig/editorconfig-vim'  " EditorConfig
+Plug 'leafgarland/typescript-vim' " Typescript syntax highlighting
 
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
