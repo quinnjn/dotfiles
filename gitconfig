@@ -1,29 +1,29 @@
 [alias]
-	co = checkout
-	st = status
-	today = !git log --since=midnight --author=$(git config user.name) --oneline
+  co = checkout
+  st = status
+  today = !git log --since=midnight --author=$(git config user.name) --oneline
 
 [push]
-	default = current
+  default = current
 
 [pull]
-	rebase = true
+  rebase = true
 
 [commit]
-	gpgSign = true
-	verbose = true
+  gpgSign = true
+  verbose = true
 
 [gpg]
-	program = gpg
+  program = gpg
 
 [diff]
-	wserrorhighlight = all
+  wserrorhighlight = all
 
 [includeIf "gitdir:~/work/"]
-	path=~/.gitconfig.work
+  path=~/.gitconfig.work
 
 [includeIf "gitdir:~/git/github.com/quinnjn/"]
-	path=~/.gitconfig.personal
+  path=~/.gitconfig.personal
 
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
