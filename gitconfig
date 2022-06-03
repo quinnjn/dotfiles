@@ -2,6 +2,8 @@
   co = checkout
   st = status
   today = !git log --since=midnight --author=$(git config user.name) --oneline
+  pf = push --force-with-lease
+  rb = pull --rebase origin main
 
 [push]
   default = current
