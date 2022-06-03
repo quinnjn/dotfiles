@@ -13,8 +13,12 @@ precmd() {
 # Allow parameter expansion
 setopt prompt_subst
 # Asks vcs change status
-zstyle ':vcs_info:git*' check-for-changes true
-zstyle ':vcs_info:git*' formats " on %F{blue}%b [%m%u%c]%f"
+
+zstyle ':vcs_info:*' unstagedstr ' *'
+zstyle ':vcs_info:*' stagedstr ' +'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats " on %F{blue}%b [%m%u%c]%f"
+zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
 
 prompt() {
   local prompt=""
