@@ -5,4 +5,5 @@ set -o pipefail
 
 text=$1
 
+osascript -e "display notification \"$text\""
 say $text
