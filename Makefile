@@ -111,10 +111,12 @@ config_clean:
 	@echo '=> config_clean'
 
 	rm -rf ~/.config/iterm2
+	rm -rf ~/.config/notify
 
 config_link:
 	@echo '=> config_link'
 
 	cp -r config/iterm2 ~/.config/iterm2
+	cp -r config/notify ~/.config/notify
 
 clean: vim_clean
