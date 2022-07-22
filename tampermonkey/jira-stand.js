@@ -1,4 +1,4 @@
-let index = 1;
+let index = 0;
 
 const incrementAssignee = (direction) => {
   clickAssignee();
@@ -31,8 +31,8 @@ const closeAll = () =>
   });
 
 document.addEventListener('keypress', (ev) => {
-  if (ev.code === 'KeyJ') {
     ev.preventDefault();
+  if (ev.code === 'KeyJ') {
     incrementAssignee(1);
   } else if (ev.code === 'KeyK') {
     ev.preventDefault();
@@ -45,7 +45,7 @@ document.addEventListener('keypress', (ev) => {
 
     const title = document.querySelector('.subnavigator-title')
     if (title.innerHTML.indexOf('Stand Up') === -1) {
-      title.innerHTML += ' [Stand Up]';
+      title.innerHTML += ' [Stand Up!]';
     }
   }
 });
