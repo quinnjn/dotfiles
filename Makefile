@@ -82,6 +82,7 @@ vim_clean:
 vim_build:
 	@echo '=> vim_build'
 
+	mkdir -p /tmp/vim/swap # Swap folder
 	mkdir -p ~/.vim
 	cp -r vim/* ~/.vim
 

@@ -47,6 +47,8 @@ set statusline+=%=                                  " fill between
 set statusline+=[%(%l,%c%V%)]                       " [line, column]
 set statusline+=\ %1*%P%*                           " file percentage
 
+set directory=/tmp/vim/swap  " Swap files to tmp
+
 " Color Scheme
 """"""""""""""
 silent! colorscheme srcery                          " Colorscheme
