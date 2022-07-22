@@ -65,7 +65,11 @@ highlight directory    cterm=NONE ctermfg=Red                           " Colour
 
 " Mappings
 """""""""""""""""""
+" NERDTree
 map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
+map <silent> <LocalLeader>nr :NERDTree<CR>
+map <silent> <LocalLeader>nf :NERDTreeFind<CR>
+
 map <silent> <LocalLeader>cc :TComment<CR>
 map <silent> <LocalLeader>ff :CtrlP<CR>
 map <silent> <LocalLeader>fr :CommandTFlush<CR>
