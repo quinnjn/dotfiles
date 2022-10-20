@@ -84,6 +84,9 @@ map <silent> <LocalLeader>fr :CommandTFlush<CR>
 map <silent> <LocalLeader>be :CtrlPBuffer<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+" Enable spellcheck
+map <LocalLeader>s :setlocal spell! spelllang=en_US
+
 " Functions
 """""""""""
 " Displays vim help, or coc hover
