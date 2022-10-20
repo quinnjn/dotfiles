@@ -52,6 +52,9 @@ set directory=/tmp/vim/swap  " Swap files to tmp
 " Center cursor when entering insert mode
 autocmd InsertEnter * norm zz
 
+" Autocomplete vim commands
+set wildmode=longest,list,full
+
 " Color Scheme
 """"""""""""""
 silent! colorscheme srcery                          " Colorscheme
