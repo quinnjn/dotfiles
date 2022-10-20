@@ -3,6 +3,7 @@
 # This script will replace files found your home directory!!! Use discretion!
 
 UNAME := $(shell uname)
+FF_PROFILE_DIR := ~/Library/Application\ Support/Firefox/Profiles
 
 all: clean zsh bash scripts vim tmux system config
 	@echo '=> all'
@@ -114,10 +115,18 @@ config_clean:
 	rm -rf ~/.config/iterm2
 	rm -rf ~/.config/notify
 
-config_link:
+config_link: firefox_config_install
 	@echo '=> config_link'
 
 	cp -r config/iterm2 ~/.config/iterm2
 	cp -r config/notify ~/.config/notify
 
+	mkdir -p $(FF_PROFILE_DIR)/chrome
+	cp -r config/firefox/userChrome.css $(FF_PROFILE_DIR)/chrome/userChrome.css
+
+firefox_config_install:
+	for folder in $(FF_PROFILE_DIR)/*; do \
+		mkdir -p "$$folder/chrome"; \
+		cp -r config/firefox/userChrome.css "$$folder/chrome/userChrome.css"; \
+	done
 clean: vim_clean
