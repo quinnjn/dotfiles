@@ -49,6 +49,9 @@ set statusline+=\ %1*%P%*                           " file percentage
 
 set directory=/tmp/vim/swap  " Swap files to tmp
 
+" Center cursor when entering insert mode
+autocmd InsertEnter * norm zz
+
 " Color Scheme
 """"""""""""""
 silent! colorscheme srcery                          " Colorscheme
