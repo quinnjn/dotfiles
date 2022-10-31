@@ -10,6 +10,14 @@ precmd() {
   vcs_info
 }
 
+work_prompt () {
+  if [[ "$PWD" =~ ".*/work/.*" ]] && [[ -f ~/bin/work-prompt ]]; then
+    echo $(~/bin/work-prompt)
+  fi
+}
+
+precmd_functions+=(work_prompt)
+
 # Allow parameter expansion
 setopt prompt_subst
 # Asks vcs change status
