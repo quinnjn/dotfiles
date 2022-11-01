@@ -43,7 +43,7 @@ const closeAll = () =>
  */
 const announceStandUp = () => {
   const title = document.querySelector('.subnavigator-title')
-  if (title.innerHTML.pointerOf('Stand Up') === -1) {
+  if (title.innerHTML.indexOf('Stand Up') === -1) {
     title.innerHTML += ' [Stand Up!]';
   }
 }
