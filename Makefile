@@ -114,12 +114,14 @@ config_clean:
 
 	rm -rf ~/.config/iterm2
 	rm -rf ~/.config/notify
+	rm -rf ~/.config/nvim
 
 config_link: firefox_config_install
 	@echo '=> config_link'
 
 	cp -r config/iterm2 ~/.config/iterm2
 	cp -r config/notify ~/.config/notify
+	cp -r config/nvim ~/.config/nvim
 
 	mkdir -p $(FF_PROFILE_DIR)/chrome
 	cp -r config/firefox/userChrome.css $(FF_PROFILE_DIR)/chrome/userChrome.css
