@@ -5,7 +5,7 @@
 UNAME := $(shell uname)
 FF_PROFILE_DIR := ~/Library/Application\ Support/Firefox/Profiles
 
-all: clean zsh bash scripts vim tmux system config
+all: clean zsh bash gitconfig scripts vim tmux system config
 	@echo '=> all'
 
 zsh_clean:
@@ -34,20 +34,26 @@ bash_link:
 	ln -sf `pwd`/bash_prompt ~/.bash_prompt
 	ln -sf `pwd`/bashrc ~/.bashrc
 	ln -sf `pwd`/vimrc ~/.vimrc
-	ln -sf `pwd`/gitignore ~/.gitignore
-	ln -sf `pwd`/gitconfig.work ~/.gitconfig.work
-	ln -sf `pwd`/gitconfig.personal ~/.gitconfig.personal
 	ln -sf `pwd`/profile ~/.profile
 	ln -sf `pwd`/zshrc ~/.zshrc
 	ln -sf `pwd`/zshenv ~/.zshenv
+
+bash: bash_link
+	@echo '=> bash'
+
+.PHONY: gitconfig
+gitconfig:
+	@echo '=> gitconfig'
+
+	ln -sf `pwd`/gitignore ~/.gitignore
+	ln -sf `pwd`/gitconfig.work ~/.gitconfig.work
+	ln -sf `pwd`/gitconfig.personal ~/.gitconfig.personal
 
 	# Git wants to rewrite ~ to the direct path
 	# copying this file to location will ignore
 	# that rewrite.
 	(cp -r `pwd`/gitconfig ~/.gitconfig || :)
 
-bash: bash_link
-	@echo '=> bash'
 
 # Cleans out the ~/bin directory
 scripts_clean:
