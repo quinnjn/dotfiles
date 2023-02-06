@@ -15,5 +15,9 @@ work() {
 
 # Make ls prettier
 ls() {
-  gls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"
+  if [[ "$(uname)" == "Darwin" ]]; then
+    gls --group-directories-first --time-style=+"%Y-%m-%d %H:%M:%S" --color=auto "$@"
+  else
+    command ls --color=auto "$@"
+  fi
 }
