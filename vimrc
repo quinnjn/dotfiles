@@ -4,7 +4,7 @@ call plug#begin('~/.vim/vim-plug')
 Plug 'gmarik/Vundle.vim'        " Plugin manager
 Plug 'scrooloose/nerdtree'      " Tree file explorer
 Plug 'tomtom/tcomment_vim'      " Comments out text depending on the file type
-Plug 'kien/ctrlp.vim'           " Fuzzy finder
+Plug 'wincent/command-t', { 'do': 'make' }  " Fuzzy finder
 Plug 'dense-analysis/ale'       " Linting
 Plug 'mtth/scratch.vim'         " scratch window. gs to activate
 Plug 'tpope/vim-fugitive'       " Git wrapper in vim
@@ -81,9 +81,10 @@ map <silent> <LocalLeader>nr :NERDTree<CR>
 map <silent> <LocalLeader>nf :NERDTreeFind<CR>
 
 map <silent> <LocalLeader>cc :TComment<CR>
-map <silent> <LocalLeader>ff :CtrlP<CR>
+map <silent> <LocalLeader>ff :CommandT<CR>
+map <silent> <LocalLeader>fg :CommandTGit<CR>
 map <silent> <LocalLeader>fr :CommandTFlush<CR>
-map <silent> <LocalLeader>be :CtrlPBuffer<CR>
+map <silent> <LocalLeader>be :CommandTBuffer<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Enable spellcheck
@@ -100,12 +101,9 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Plugin settings
+" CommandT
 """""""""""""""""""
-set wildignore+=node_modules     " Ignore node_modules
-set wildignore+=*/tmp/*          " Ignore tmp folders
-set wildignore+=*/log/*          " Ignore log folders
-set wildignore+=.git             " Ignore git folder
+source ~/.vim/commandt.vim
 
 " ALE
 " """
