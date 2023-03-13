@@ -13,11 +13,13 @@ Plug 'artur-shaik/vim-javacomplete2'	" java completion for vim
 Plug 'editorconfig/editorconfig-vim'  " EditorConfig
 Plug 'leafgarland/typescript-vim' " Typescript syntax highlighting
 Plug 'jparise/vim-graphql'        " GraphQL syntax highlighting
+Plug 'Vimjas/vim-python-pep8-indent' " Fix python indenting
 
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+
 
 call plug#end()
 
