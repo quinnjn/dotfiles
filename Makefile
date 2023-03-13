@@ -5,8 +5,15 @@
 UNAME := $(shell uname)
 FF_PROFILE_DIR := ~/Library/Application\ Support/Firefox/Profiles
 
-all: clean zsh bash gitconfig scripts vim tmux system config
+all: clean profile zsh git scripts vim tmux system config
 	@echo '=> all'
+
+profile_link:
+	@echo '=> profile_link'
+	ln -sf `pwd`/profile ~/.profile
+
+profile: profile_link
+	@echo '=> profile'
 
 zsh_clean:
 	@echo '=> zsh_clean'
@@ -21,39 +28,26 @@ zsh_copy:
 	cp -r zsh/aliases ~/zsh/aliases
 	cp -r zsh/functions ~/zsh/functions
 
-zsh: zsh_clean zsh_copy
-	@echo '=> zsh'
-
-# Links bash files to the users directory
-bash_link:
-	@echo '=> bash_link'
-
-	ln -sf `pwd`/bash_aliases ~/.bash_aliases
-	ln -sf `pwd`/bash_functions ~/.bash_functions
-	ln -sf `pwd`/bash_profile ~/.bash_profile
-	ln -sf `pwd`/bash_prompt ~/.bash_prompt
-	ln -sf `pwd`/bashrc ~/.bashrc
-	ln -sf `pwd`/vimrc ~/.vimrc
-	ln -sf `pwd`/profile ~/.profile
+zsh_link:
+	@echo '=> zsh_clean'
 	ln -sf `pwd`/zshrc ~/.zshrc
 	ln -sf `pwd`/zshenv ~/.zshenv
 
-bash: bash_link
-	@echo '=> bash'
+zsh: zsh_clean zsh_copy zsh_link
+	@echo '=> zsh'
 
-.PHONY: gitconfig
-gitconfig:
-	@echo '=> gitconfig'
-
+git_link:
+	@echo '=> git_link'
 	ln -sf `pwd`/gitignore ~/.gitignore
 	ln -sf `pwd`/gitconfig.work ~/.gitconfig.work
 	ln -sf `pwd`/gitconfig.personal ~/.gitconfig.personal
 
+git: git_link
+	@echo '=> git'
 	# Git wants to rewrite ~ to the direct path
 	# copying this file to location will ignore
 	# that rewrite.
 	(cp -r `pwd`/gitconfig ~/.gitconfig || :)
-
 
 # Cleans out the ~/bin directory
 scripts_clean:
@@ -85,6 +79,10 @@ vim_clean:
 
 	rm -rf ~/.vim
 
+vim_link:
+	@echo '=> vim_link'
+	ln -sf `pwd`/vimrc ~/.vimrc
+
 # Pulls vundle, installs vundle plugins
 vim_build:
 	@echo '=> vim_build'
@@ -100,7 +98,7 @@ vim_install:
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +PlugInstall +qall
 
-vim: vim_build vim_install
+vim: vim_link vim_build vim_install
 	@echo '=> vim'
 
 # System based steps
@@ -137,4 +135,5 @@ firefox_config_install:
 		mkdir -p "$$folder/chrome"; \
 		cp -r config/firefox/userChrome.css "$$folder/chrome/userChrome.css"; \
 	done
+
 clean: vim_clean
