@@ -14,6 +14,7 @@ Plug 'editorconfig/editorconfig-vim'  " EditorConfig
 Plug 'leafgarland/typescript-vim' " Typescript syntax highlighting
 Plug 'jparise/vim-graphql'        " GraphQL syntax highlighting
 Plug 'ledger/vim-ledger'        " ledger plugin
+Plug 'rhaiscript/vim-rhai'      " rhai syntax
 Plug 'Vimjas/vim-python-pep8-indent' " Fix python indenting
 
 " Conquer of Completion
