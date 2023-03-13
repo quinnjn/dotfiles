@@ -29,5 +29,9 @@
 
 [core]
   excludesfile = ~/.gitignore
+
 [init]
 	defaultBranch = main
+
+[user]
+  signingkey = 4299FB2EC007A47AAFF4DB024F949B5F109B11D9
