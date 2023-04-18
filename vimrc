@@ -15,13 +15,14 @@ Plug 'leafgarland/typescript-vim' " Typescript syntax highlighting
 Plug 'jparise/vim-graphql'        " GraphQL syntax highlighting
 Plug 'ledger/vim-ledger'        " ledger plugin
 Plug 'rhaiscript/vim-rhai'      " rhai syntax
+
 Plug 'Vimjas/vim-python-pep8-indent' " Fix python indenting
 
 " Conquer of Completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-
+Plug 'neoclide/coc.nvim'      ,{'branch': 'release'}
+Plug 'neoclide/coc-json'      ,{'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver'  ,{'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-rust-analyzer'
 
 call plug#end()
 
