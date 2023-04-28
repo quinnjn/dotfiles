@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+set -e
+set -u
+set -o pipefail
+
+office-light off
+pmset sleepnow
