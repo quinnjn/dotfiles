@@ -24,6 +24,8 @@ Plug 'neoclide/coc-json'      ,{'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver'  ,{'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-rust-analyzer'
 
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 " General settings

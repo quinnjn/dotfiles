@@ -78,6 +78,7 @@ vim_clean:
 	@echo '=> vim_clean'
 
 	rm -rf ~/.vim
+	rm -rf ~/.config/nvim/pack
 
 vim_link:
 	@echo '=> vim_link'
@@ -96,7 +97,7 @@ vim_install:
 
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	vim +PlugInstall +qall
+	vim +PlugInstall +'Copilot setup' +qall
 
 vim: vim_link vim_build vim_install
 	@echo '=> vim'
