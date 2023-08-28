@@ -1,3 +1,6 @@
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github
+
 # Bring in all our config
 for config in ~/zsh/config/*; do
   source $config
