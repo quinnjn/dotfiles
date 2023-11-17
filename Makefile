@@ -8,6 +8,10 @@ FF_PROFILE_DIR := ~/Library/Application\ Support/Firefox/Profiles
 all: clean profile zsh git scripts vim tmux system config
 	@echo '=> all'
 
+# Codespaces specific steps
+bootstrap_codespaces: clean profile zsh git scripts tmux config
+	@echo '=> codespaces'
+
 profile_link:
 	@echo '=> profile_link'
 	ln -sf `pwd`/profile ~/.profile
