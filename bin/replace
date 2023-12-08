@@ -1,0 +1,35 @@
+#!/bin/bash
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      _help
+      ;;
+    *)
+      if [[ -z "$SEARCH" ]]; then
+        SEARCH="$1"
+      elif [[ -z "$REPLACE" ]]; then
+        REPLACE="$1"
+      fi
+
+      shift
+      ;;
+  esac
+done
+
+function _help {
+  echo "Usage: search <search_pattern> <replace_pattern>"
+  echo "Options:"
+  echo "  --help  Show this help message"
+  exit 0
+}
+
+function replace {
+  grep -rl "${SEARCH}" $(pwd) | xargs sed -i "" "s/${SEARCH}/${REPLACE}/g"
+}
+
+if [[ -z "$SEARCH" ]] && [[ -z "$REPLACE" ]]; then
+  _help
+fi
+
+replace

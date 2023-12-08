@@ -1,0 +1,30 @@
+#!/bin/bash
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      _help
+      ;;
+    *)
+      TEXT="$1"
+      shift
+      ;;
+  esac
+done
+
+function _help {
+  echo "Usage: search <pattern>"
+  echo "Options:"
+  echo "  --help  Show this help message"
+  exit 0
+}
+
+function search {
+  grep -Hrn "$TEXT" .
+}
+
+if [[ -z "$TEXT" ]]; then
+  _help
+fi
+
+search
