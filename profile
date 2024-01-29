@@ -23,11 +23,11 @@ fi
 if [[ -s "/home/quinnjn/.sdkman/bin/sdkman-init.sh" ]]; then
   export SDKMAN_DIR="/home/quinnjn/.sdkman"
   source "/home/quinnjn/.sdkman/bin/sdkman-init.sh"
-fi 
+fi
 
 # system based scripts
 case "$(uname -a)" in
-  *Debian*) 
+  *Debian*)
     source ~/bash/profile/debian.sh
     ;;
 esac
