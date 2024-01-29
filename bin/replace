@@ -25,7 +25,12 @@ function _help {
 }
 
 function replace {
-  grep -rl "${SEARCH}" $(pwd) | xargs sed -i "" "s/${SEARCH}/${REPLACE}/g"
+  search "${SEARCH}"
+  read -p "Are you sure you want to replace '${SEARCH}' with '${REPLACE}'? [y/N] " -n 1 -r
+
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    grep -rl "${SEARCH}" $(pwd) | xargs sed -i "" "s/${SEARCH}/${REPLACE}/g"
+  fi
 }
 
 if [[ -z "$SEARCH" ]] && [[ -z "$REPLACE" ]]; then
