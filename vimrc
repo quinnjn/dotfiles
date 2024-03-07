@@ -31,6 +31,11 @@ call plug#end()
 " General settings
 """"""""""""""""""
 syntax on                     " Syntax highlight
+
+" Fix slow syntax highlighting
+" See https://jameschambers.co.uk/vim-typescript-slow
+set re=0
+
 set number                    " Show line numbers
 filetype plugin indent on     " 2 space tabs
 set expandtab                 " Converts tabs to spaces
