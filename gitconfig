@@ -11,6 +11,10 @@
 [pull]
   rebase = true
 
+[rebase]
+  autoSquash = true
+  autoStash = true
+
 [commit]
   gpgSign = true
   verbose = true
