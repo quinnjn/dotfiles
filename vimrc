@@ -4,7 +4,8 @@ call plug#begin('~/.vim/vim-plug')
 Plug 'gmarik/Vundle.vim'        " Plugin manager
 Plug 'scrooloose/nerdtree'      " Tree file explorer
 Plug 'tomtom/tcomment_vim'      " Comments out text depending on the file type
-Plug 'wincent/command-t', { 'do': 'make' }  " Fuzzy finder
+" Plug 'wincent/command-t', { 'do': 'make', 'tag': '5.0.5' }  " Fuzzy finder
+Plug 'ctrlpvim/ctrlp.vim'       " Fuzzy finder
 Plug 'dense-analysis/ale'       " Linting
 Plug 'mtth/scratch.vim'         " scratch window. gs to activate
 Plug 'tpope/vim-fugitive'       " Git wrapper in vim
@@ -91,10 +92,8 @@ map <silent> <LocalLeader>nr :NERDTree<CR>
 map <silent> <LocalLeader>nf :NERDTreeFind<CR>
 
 map <silent> <LocalLeader>cc :TComment<CR>
-map <silent> <LocalLeader>ff :CommandT<CR>
-map <silent> <LocalLeader>fg :CommandTGit<CR>
-map <silent> <LocalLeader>fr :CommandTFlush<CR>
-map <silent> <LocalLeader>be :CommandTBuffer<CR>
+map <silent> <LocalLeader>ff :CtrlP<CR>
+map <silent> <LocalLeader>be :CtrlPBuffer<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Enable spellcheck
@@ -111,18 +110,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" CommandT
-"""""""""""""""""""
-source ~/.vim/commandt.vim
-
-" ALE
-" """
-source ~/.vim/ale.vim
-
-" vim-javacomplete2
-" """""""""""""""""
-source ~/.vim/vim-javacomplete2.vim
-
-" coc
-" """
-source ~/.vim/coc.vim
+" Source all *.vim files in ~/.vim
+for f in split(glob('~/.vim/*.vim'), '\n')
+    exe 'source' f
+endfor
