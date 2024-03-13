@@ -15,10 +15,10 @@ def camera(active):
         else:
             light.off()
 
-logStreamCmd = ['log', 'stream', '--predicate', """eventMessage contains 'Frame publisher cameras changed to'"""]
+logStreamCmd = ['log', 'stream', '--predicate', """eventMessage contains 'AppleH13CamIn::setPowerStateGated -'"""]
 with subprocess.Popen(logStreamCmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True) as proc:
     for line in proc.stdout:
-        if ("Frame publisher cameras changed to [:]" in line):
+        if ("AppleH13CamIn::setPowerStateGated - 0" in line):
             camera(False)
-        elif ('Frame publisher cameras changed to ["' in line):
+        elif ('AppleH13CamIn::setPowerStateGated - 1' in line):
             camera(True)
