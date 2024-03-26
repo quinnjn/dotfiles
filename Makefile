@@ -82,6 +82,10 @@ vim_clean:
 	@echo '=> vim_clean'
 
 	rm -rf ~/.vim
+
+nvim_clean:
+	@echo '=> nvim_clean'
+
 	rm -rf ~/.config/nvim/pack
 	rm -r ~/.config/nvim
 
@@ -96,6 +100,10 @@ vim_build:
 	mkdir -p /tmp/vim/swap # Swap folder
 	mkdir -p ~/.vim
 	cp -r vim/* ~/.vim
+
+nvim_build:
+	@echo '=> nvim_build'
+
 	mkdir -p ~/.config/nvim
 	cp -r config/nvim/* ~/.config/nvim
 
@@ -106,10 +114,10 @@ vim_install:
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +PlugInstall +'Copilot setup' +qall
 
-	nvim -u ~/.config/nvim/init.lua --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
 vim: vim_link vim_build vim_install
 	@echo '=> vim'
+nvim: nvim_clean nvim_build
+	@echo '=> nvim'
 
 # System based steps
 system:
