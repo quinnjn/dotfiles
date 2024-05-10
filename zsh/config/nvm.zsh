@@ -20,4 +20,8 @@ load-nvmrc() {
     nvm use default
   fi
 }
+
+if [ -f .nvmrc ]; then
+  nvm install
+fi
 add-zsh-hook chpwd load-nvmrc
