@@ -43,7 +43,6 @@ zsh: zsh_clean zsh_copy zsh_link
 git_link:
 	@echo '=> git_link'
 	ln -sf `pwd`/gitignore ~/.gitignore
-	ln -sf `pwd`/gitconfig.work ~/.gitconfig.work
 	ln -sf `pwd`/gitconfig.personal ~/.gitconfig.personal
 
 git: git_link
