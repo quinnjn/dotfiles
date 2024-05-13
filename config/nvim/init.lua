@@ -1,5 +1,4 @@
 require('plugins')
 require('keymap')
-require('lsp')
 require('settings')
 require('runtests')
