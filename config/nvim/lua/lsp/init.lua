@@ -1,7 +1,7 @@
 vim.lsp.set_log_level("debug")
 
 local lspconfig = require('lspconfig')
-lspconfig.tsserver.setup {}
+--lspconfig.tsserver.setup {}
 lspconfig.graphql.setup {}
 lspconfig.eslint.setup {}
 
