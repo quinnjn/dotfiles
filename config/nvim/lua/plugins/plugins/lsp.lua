@@ -11,7 +11,14 @@ return {
       local lspconfig = require('lspconfig')
       --lspconfig.tsserver.setup {}
       lspconfig.graphql.setup {}
-      lspconfig.eslint.setup {}
+      lspconfig.eslint.setup({
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+      })
 
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, {
         desc = 'Open diagnostics in a floating window',
