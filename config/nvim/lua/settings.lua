@@ -7,3 +7,6 @@ opt.number = true
 opt.tabstop = 4
 opt.shiftwidth = 2
 opt.expandtab = true
+
+-- Disable mouse
+opt.mouse = ''
