@@ -1,9 +1,14 @@
 #!/bin/bash
 
+YES=false
+
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -h|--help)
       _help
+      ;;
+    --yes)
+      YES=true
       ;;
     *)
       if [[ -z "$SEARCH" ]]; then
@@ -21,12 +26,15 @@ function _help {
   echo "Usage: search <search_pattern> <replace_pattern>"
   echo "Options:"
   echo "  --help  Show this help message"
+  echo "  --yes   Skip confirmation"
   exit 0
 }
 
 function replace {
-  search "${SEARCH}"
-  read -p "Are you sure you want to replace '${SEARCH}' with '${REPLACE}'? [y/N] " -n 1 -r
+  if [[ "$YES" == "false" ]]; then
+    search "${SEARCH}"
+    read -p "Are you sure you want to replace '${SEARCH}' with '${REPLACE}'? [y/N] " -n 1 -r
+  fi
 
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     grep -rl "${SEARCH}" $(pwd) | xargs sed -i "" "s/${SEARCH}/${REPLACE}/g"
