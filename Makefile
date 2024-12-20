@@ -5,7 +5,7 @@
 UNAME := $(shell uname)
 FF_PROFILE_DIR := ~/Library/Application\ Support/Firefox/Profiles
 
-all: clean profile zsh git scripts vim tmux system config
+all: clean profile zsh git scripts nvim tmux system config
 	@echo '=> all'
 
 # Codespaces specific steps
@@ -76,29 +76,11 @@ tmux_copy:
 tmux: tmux_copy
 	@echo '=> tmux'
 
-# Removes the ~/.vim directory
-vim_clean:
-	@echo '=> vim_clean'
-
-	rm -rf ~/.vim
-
 nvim_clean:
 	@echo '=> nvim_clean'
 
 	rm -rf ~/.config/nvim/pack
 	rm -r ~/.config/nvim
-
-vim_link:
-	@echo '=> vim_link'
-	ln -sf `pwd`/vimrc ~/.vimrc
-
-# Pulls vundle, installs vundle plugins
-vim_build:
-	@echo '=> vim_build'
-
-	mkdir -p /tmp/vim/swap # Swap folder
-	mkdir -p ~/.vim
-	cp -r vim/* ~/.vim
 
 nvim_build:
 	@echo '=> nvim_build'
@@ -106,15 +88,6 @@ nvim_build:
 	mkdir -p ~/.config/nvim
 	cp -r config/nvim/* ~/.config/nvim
 
-vim_install:
-	@echo '=> vim_install'
-
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	vim +PlugInstall +'Copilot setup' +qall
-
-vim: vim_link vim_build vim_install
-	@echo '=> vim'
 nvim: nvim_clean nvim_build
 	@echo '=> nvim'
 
@@ -153,4 +126,4 @@ firefox_config_install:
 		cp -r config/firefox/userChrome.css "$$folder/chrome/userChrome.css"; \
 	done
 
-clean: vim_clean
+clean: nvim_clean
