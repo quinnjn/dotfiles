@@ -1,0 +1,20 @@
+#!/bin/bash
+
+function _help {
+  echo "What: filters out hunks that match the regex. Can be combined with `git add -p` to add those hunks."
+  echo "Usage: git-add-bulk <regex>"
+  echo "Options:"
+  echo "  --help  Show this help message"
+  exit 0
+}
+
+function git-add-bulk {
+  regex=$1
+  git diff -U0 -S $regex | grepdiff -E $regex --output-matching=hunk
+}
+
+if [[ -z "$1" ]]; then
+  _help
+fi
+
+git-add-bulk $@
