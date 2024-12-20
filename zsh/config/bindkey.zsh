@@ -1,3 +1,4 @@
+bindkey -M viins # Vi mode
 bindkey "^R" history-incremental-search-backward
 
 zle -N edit-command-line
