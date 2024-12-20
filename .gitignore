@@ -1,4 +1,4 @@
 # Ignored configs
-**/config/lutris
+**/config/github-copilot
 
 .DS_Store
