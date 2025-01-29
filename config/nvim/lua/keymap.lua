@@ -25,3 +25,7 @@ vim.keymap.set('v', '<leader>cc', ":'<,'>CommentToggle<cr>", {
   desc = 'Comment current visual selected',
   silent = true, 
 })
+
+vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#<cr>", {
+  desc="Close all buffers but the current one"
+}) -- https://stackoverflow.com/a/42071865/516188
