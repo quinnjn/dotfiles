@@ -10,7 +10,9 @@ return {
     config = function ()
       local lspconfig = require('lspconfig')
       lspconfig.graphql.setup({})
-      lspconfig.eslint.setup({})
+      lspconfig.tsserver.setup({
+        single_file_support = false,
+      })
 
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, {
         desc = 'Open diagnostics in a floating window',
