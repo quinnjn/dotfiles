@@ -12,6 +12,7 @@ return {
       lspconfig.graphql.setup({})
       lspconfig.tsserver.setup({
         single_file_support = false,
+        importModuleSpecifierPreference = 'relative'
       })
 
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, {
