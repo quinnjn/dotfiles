@@ -11,6 +11,7 @@ return {
         ensure_installed = {
           "typescript",
           "graphql",
+          "vimdoc",
         },
         sync_install = true,
         highlight = { enable = true },

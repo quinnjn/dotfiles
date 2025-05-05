@@ -7,10 +7,6 @@ vim.keymap.set('n', '<Leader>nf', function ()
   vim.cmd.Neotree { 'reveal' }
 end)
 
--- CommandT
-vim.keymap.set('n', '<Leader>ff', vim.cmd.CommandT)
-vim.keymap.set('n', '<Leader>be', vim.cmd.CommandTBuffer)
-
 -- runtests
 vim.keymap.set('n', '<Leader>rt', vim.cmd.JestSingle)
 vim.keymap.set('n', '<Leader>rb', vim.cmd.JestFile)
